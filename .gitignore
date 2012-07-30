@@ -1,0 +1,6 @@
+vim/.netrwhist
+*.pyc
+*~
+*.swp
+vim/view
+vim/tmp

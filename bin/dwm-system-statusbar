@@ -1,0 +1,62 @@
+#!/bin/bash
+#
+# ~/bin/system-statusbar
+#
+# Status bar for dwm (parts taken from http://jasonwryan.com/)
+
+SEPERATOR=Ý
+MEMORY=Þ
+VOLUME=Ô
+CLOCK=Õ 
+CPU=Ï
+
+print_mem_used() {
+    mem_used="$(free -m | awk '/buffers\/cache/ {print $3}')"
+    echo -n "$SEPERATOR  $MEMORY ${mem_used}M"
+}
+
+print_volume() {
+    volume="$(amixer get PCM | tail -n1 | sed -r 's/.*\[(.*)%\].*/\1/')"
+    echo -n "$SEPERATOR $VOLUME  ${volume}%"
+}
+
+print_datetime() {
+    datetime="$(date "+%a %d %b $SEPERATOR %H:%M")"
+    echo -n "$CLOCK ${datetime}"
+}
+
+print_battery(){
+    echo -n "$SEPERATOR Bat. $(acpi -b | awk '{ print $4 " " $5 }' | tr -d ',')"
+}
+
+while true; do
+    # get new cpu idle and total usage
+    eval $(awk '/^cpu /{print "cpu_idle_now=" $5 "; cpu_total_now=" $2+$3+$4+$5 }' /proc/stat)
+    cpu_interval=$((cpu_total_now-${cpu_total_old:-0}))
+    # calculate cpu usage (%)
+    let cpu_used="100 * ($cpu_interval - ($cpu_idle_now-${cpu_idle_old:-0})) / $cpu_interval"
+
+    # output vars
+    print_cpu_used() { printf "%-12b" "$SEPERATOR $CPU ${cpu_used}%"; }
+
+	IP=$(for i in `ip r`; do echo $i; done | grep -A 1 src | tail -n1) # can get confused if you use vmware
+	TEMP="$(($(cat /sys/class/thermal/thermal_zone0/temp) / 1000))C"
+
+    STATUS="$SEPERATOR $IP $SEPERATOR $TEMP `print_cpu_used` `print_mem_used` \
+            `print_volume` `print_datetime` "
+
+	if acpi -a | grep off-line > /dev/null
+	then
+        STATUS="`print_battery` $STATUS"
+    fi
+
+    # Pipe to status bar, not indented due to printing extra spaces/tabs
+    xsetroot -name "$STATUS"
+
+    # reset old rates
+    cpu_idle_old=$cpu_idle_now
+    cpu_total_old=$cpu_total_now
+
+    # loop stats every 1 second
+    sleep 1
+done
