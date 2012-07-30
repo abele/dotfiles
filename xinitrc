@@ -28,6 +28,6 @@ xrdb -merge $HOME/.Xresources
 xmodmap ~/.Xmodmap
 
 # Show system status in statusbar
-system-statusbar &
+dwm-system-statusbar &
 
 exec dwm
