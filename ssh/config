@@ -1,0 +1,12 @@
+
+Host cc
+    HostName comeandcatch.com
+    User ja
+
+Host dev
+    HostName dev
+    User ja
+
+Host bite
+    HostName bite
+    User janis

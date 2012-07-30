@@ -1,0 +1,12 @@
+#!/bin/bash
+# Fix permisions for ssh keys directory.
+#
+# Example usage:
+#   $ fix-ssh
+#
+
+set -e
+
+sudo chmod 600 ~/.ssh/id_*
+sudo chmod 644 ~/.ssh/known_hosts
+sudo chmod 755 ~/.ssh

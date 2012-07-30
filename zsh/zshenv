@@ -1,0 +1,2 @@
+fpath=($fpath $HOME/.zsh/func $HOME/.zsh/completion)
+typeset -U fpath
