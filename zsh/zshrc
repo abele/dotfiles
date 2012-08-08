@@ -82,3 +82,6 @@ export MAN_POSIXLY_CORRECT=1
 
 # Enable syntax highlighting
 source ~/.zsh/plugins/syntax-highlighting/zsh-syntax-highlighting.zsh
+
+# Do not freeze terminal on Ctrl+s
+stty stop ''
