@@ -37,6 +37,8 @@ Bundle 'tpope/vim-cucumber'
 Bundle 'klen/python-mode'
 Bundle 'klen/vim-jsmode'
 
+Bundle 'sophacles/vim-bundle-mako'
+
 filetype plugin indent on     " required!
 filetype plugin on
 
