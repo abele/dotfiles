@@ -177,7 +177,7 @@ autocmd FileType dosini set commentstring=#\ %s
 autocmd FileType ruby,haml,eruby,yaml,html,htmldjango,mako,javascript,sass,cucumber set ai sw=2 sts=2 et
 
 " Indent p tags
-autocmd FileType html,eruby,mako,htmldjango if g:html_indent_tags !~ '\\|p\>' | let g:html_indent_tags .= '\|p\|li\|dt\|dd' | endif
+" autocmd FileType html,eruby,mako,htmldjango if g:html_indent_tags !~ '\\|p\>' | let g:html_indent_tags .= '\|p\|li\|dt\|dd' | endif
 
 " supertab
 let g:SuperTabDefaultCompletionType = "context"
@@ -220,6 +220,13 @@ let g:pymode_breakpoint_key = '<leader>sb'
 " Do not load run code plugin
 let g:pymode_run = 0
 
+" Use sparkup for other types
+augroup sparkup_types
+    " Remove ALL autocommands of the current group.
+    autocmd!
+    " Add sparkup to new filetypes
+    autocmd FileType mako,htmldjango runtime! ftplugin/html/sparkup.vim
+augroup END
 " ========== Backup ================
 
 " Store temporary files in a central spot
