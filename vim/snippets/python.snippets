@@ -1,0 +1,12 @@
+# Describe behaviour
+snippet it 
+	def it_${1:does_something}(self):
+		expect(${2}) == ${3}
+
+# Describe unit
+snippet descr 
+	class describe_${1:something}:
+		${2:pass}
+# Set nose pdb breakpoint
+snippet npdb 
+	from nose.tools import set_trace; set_trace()
