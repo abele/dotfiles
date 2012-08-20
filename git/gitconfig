@@ -50,3 +50,5 @@
 [merge]
     tool = vimdiff
 
+[core]
+	excludesfile = /home/janis.abele/.gitignore
