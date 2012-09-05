@@ -30,4 +30,5 @@ xmodmap ~/.Xmodmap
 # Show system status in statusbar
 dwm-system-statusbar &
 
-exec dwm
+export LD_LIBRARY_PATH=/usr/local/lib
+exec awesome
