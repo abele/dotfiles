@@ -116,7 +116,7 @@ map <leader>t :CtrlPTag<CR>
 
 " Ignore verstion control artifacts
 let g:ctrlp_custom_ignore = {
-\ 'dir':  '\.git$\|\.hg$\|\.svn$\|\.egg$\|\.egg-info$',
+\ 'dir':  '\.git$\|\.hg$\|\.svn$\|\.egg$\|\.egg-info$\|env$',
 \ 'file': '\.exe$\|\.so$\|\.dll$\|\.pyc$\|\.png$\|\.jpg$',
 \ 'link': 'SOME_BAD_SYMBOLIC_LINKS',
 \ }
@@ -176,6 +176,7 @@ autocmd FileType dosini set commentstring=#\ %s
 "for ruby, autoindent with two spaces, always expand tabs
 autocmd FileType ruby,haml,eruby,yaml,html,htmldjango,mako,javascript,sass,cucumber set ai sw=2 sts=2 et
 
+
 " Indent p tags
 " autocmd FileType html,eruby,mako,htmldjango if g:html_indent_tags !~ '\\|p\>' | let g:html_indent_tags .= '\|p\|li\|dt\|dd' | endif
 
@@ -193,6 +194,7 @@ autocmd BufRead,BufNewFile *.mak set filetype=mako
 
 " Treat JSON files like JavaScript
 autocmd BufNewFile,BufRead *.json set ft=javascript
+
 
 " Remember last location in file, but not for commit messages.
 " see :help last-position-jump
@@ -242,3 +244,6 @@ endif
 " Persist folds
 autocmd BufWinLeave * silent! mkview
 autocmd BufWinEnter * silent! loadview
+
+" Two spaces for tab in TODO files
+autocmd BufNewFile,BufRead TODO setlocal softtabstop=2 tabstop=2 shiftwidth=2
