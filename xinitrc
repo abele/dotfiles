@@ -2,10 +2,6 @@
 # Taken from:
 #	https://raw.github.com/kaihendry/Kai-s--HOME/master/.xinitrc
 #
-# for terminus font in Archlinux :(
-xset +fp /usr/share/fonts/local
-xset fp rehash
-
 # Restore last wallpaper
 nitrogen --restore &
 
@@ -22,13 +18,11 @@ then
 	SSH_ASKPASS=/usr/lib/ssh/x11-ssh-askpass ssh-add < /dev/null
 fi
 
-xrdb -merge $HOME/.Xresources
-
-# Load keyboard settings
 xmodmap ~/.Xmodmap
 
-# Show system status in statusbar
-dwm-system-statusbar &
+xrdb -merge $HOME/.Xresources
 
-export LD_LIBRARY_PATH=/usr/local/lib
+# Use both screens
+xrandr --output VGA-1 --right-of DVI-I-1
+
 exec awesome
