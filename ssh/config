@@ -3,6 +3,10 @@ Host cc
     HostName comeandcatch.com
     User ja
 
+Host noobser
+    HostName noobser
+    User ja
+
 Host dev
     HostName dev
     User ja
@@ -10,3 +14,7 @@ Host dev
 Host bite
     HostName bite
     User janis
+
+Host vbox
+    HostName vbox
+    User bob
