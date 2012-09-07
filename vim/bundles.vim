@@ -39,6 +39,11 @@ Bundle 'klen/vim-jsmode'
 
 Bundle 'sophacles/vim-bundle-mako'
 
+Bundle 'godlygeek/tabular'
+Bundle 'gregsexton/Vomodoro'
+
+Bundle 'mileszs/ack.vim'
+
 filetype plugin indent on     " required!
 filetype plugin on
 

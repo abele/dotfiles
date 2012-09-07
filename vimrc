@@ -245,5 +245,14 @@ endif
 autocmd BufWinLeave * silent! mkview
 autocmd BufWinEnter * silent! loadview
 
-" Two spaces for tab in TODO files
-autocmd BufNewFile,BufRead TODO setlocal softtabstop=2 tabstop=2 shiftwidth=2
+" Make current directory todo into Pomodoro tracker
+function! UseProjectToDoAsPomodoroFile()
+    if filereadable("TODO")
+        let g:Pomo_ToDoTodayFilePath = expand("%:p:h") . '/TODO'
+        let g:Pomo_ArchiveFilePath = expand("%:p:h") . '/DONE'
+    endif
+endfunction
+
+call UseProjectToDoAsPomodoroFile()
+
+map ,p :PomodoroToDoToday<CR>
