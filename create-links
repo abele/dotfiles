@@ -40,3 +40,9 @@ ln -s -b -v -T $BASE_DIR/xinitrc ~/.xinitrc
 [ ! -d ~/.irssi ] &&  mkdir ~/.irssi
 cp -b $BASE_DIR/irssi/config ~/.irssi/config
 
+[ ! -d ~/.config ] && mkdir ~/.config
+for file in `ls $BASE_DIR/config`; do
+    ln -s -b -v -T $BASE_DIR/config/$file ~/.config/$file
+done
+
+ln -s -b -v -T $BASE_DIR/Xmodmap ~/.Xmodmap
