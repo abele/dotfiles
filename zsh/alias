@@ -1,33 +1,12 @@
+# Start week with monday
 alias cal='cal -m'
 
-# zypper
-alias z="sudo zypper"
-alias zs="sudo zypper search"
-alias zi="sudo zypper install"
-
+# Navigation
 alias l="ls"
 alias ls='ls -G --color'
 alias ll='ls -lG --color'
 alias duh='du -csh'
 
-# Dim black screan
-alias bs="sleep 1; xset dpms force off"
-
 # Keyboards
 alias lvkb="setxkbmap lv apostrophe && xmodmap ~/.Xmodmap"
 alias uskb="setxkbmap us && xmodmap ~/.Xmodmap"
-
-# Open webpages in browser
-alias -s com=google-chrome
-alias -s lv=google-chrome
-alias -s org=google-chrome
-
-# Open movies using player
-alias -s avi=smplayer
-alias -s mov=smplayer
-alias -s mkv=smplayer
-alias -s pdf=okular
-alias -s mpg=smplayer
-alias -s png=gwenview
-alias -s dvi=okular
-
