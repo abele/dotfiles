@@ -76,12 +76,16 @@
 *color7:                S_base2
 *color15:               S_base3
 
-URxvt*font:                 xft:monospace:pixelsize=12
+
+URxvt.font: xft:Inconsolata:pixelsize=14
+URxvt.boldFont: xft:Inconsolata:pixelsize=14:style=Bold
+
 URxvt*borderLess:           false
 URxvt*externalBorder:       0
 URxvt*internalBorder:       0
 URxvt*scrollBar:            false
 URxvt*depth:                32
+
 URxvt*cursorBlink:          false
 URxvt*inheritPixmap:        false
 URxvt*saveLines:            8000
@@ -90,8 +94,25 @@ URxvt*scrollTtyKeypress:    true
 URxvt*mouseWheelScrollPage: false
 URxvt*cutchars:             `'",;@&*=|?()<>[]{}
 
-URxvt.perl-ext-common:      default, matcher
-URxvt.urlLauncher:          google-chrome
-URxvt.matcher.button:       1
-URxvt.keysym.C-Delete:      perl:matcher:last
-URxvt.keysym.M-Delete:      perl:matcher:list
+URxvt.perl-lib: /home/abele/.config/urxvt/lib/
+
+URxvt.matcher.pattern.2:  \\B(/\\S+?):(\\d+)(?=:|$)
+URxvt.matcher.launcher.2: vim +$2 $1
+
+URxvt*perl-ext-common: default,matcher,keyboard-select
+URxvt.urlLauncher: chromium
+URxvt.matcher.button: 1
+
+URxvt.keysym.C-Delete: perl:matcher:last
+URxvt.keysym.M-Delete: perl:matcher:list
+
+!! Keyboard selection
+URxvt.keysym.M-Escape: perl:keyboard-select:activate
+URxvt.keysym.M-s: perl:keyboard-select:search
+
+Xft.dpi:96
+Xft.antialias: true
+Xft.hinting: true
+Xft.hintstyle: hintfull
+Xft.lcdfilter: none
+Xft.rgba: rba
