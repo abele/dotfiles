@@ -30,7 +30,7 @@ map <leader>y "*y
 " YankRing settings
 let g:yankring_history_file = '.yankring-history'
 nnoremap ,yr :YRShow<CR>
-nnoremap C-y :YRShow<CR>
+nnoremap <C-y> :YRShow<CR>
 
 " Show current line
 set cursorline
@@ -63,7 +63,7 @@ set winheight=999
 set showtabline=2
 
 " Window width
-set winwidth=79
+set winwidth=80
 
 " ==========  Search =========
 
@@ -104,14 +104,14 @@ set softtabstop=4
 nnoremap <tab> %
 vnoremap <tab> %
 
-" RestructuredText underline
-nnoremap <leader>1 yypVr=
 
 " ========= Navigation ======
 
 " Show files
 map <leader>f :CtrlP<CR>
+" Show buffers
 map <leader>b :CtrlPBuffer<CR>
+" Show tags
 map <leader>t :CtrlPTag<CR>
 
 " Ignore verstion control artifacts
@@ -120,7 +120,6 @@ let g:ctrlp_custom_ignore = {
 \ 'file': '\.exe$\|\.so$\|\.dll$\|\.pyc$\|\.png$\|\.jpg$',
 \ 'link': 'SOME_BAD_SYMBOLIC_LINKS',
 \ }
-
 
 " Show line numbers relative to current position
 set relativenumber
@@ -141,23 +140,18 @@ map <C-l> <C-w>l
 " for backgrounding buffers
 set hidden
 
-
 map <silent> <leader>z :bp<CR>
 map <silent> <leader>x :bn<CR>
-" Ignore c compilation artifacts
-" set wildignore+=*.o,*.a,*.class,*.mo
-" set wildignore+=*.la,*.so,*.obj,*.swp
-" " Ignore images
-" set wildignore+=*.jpg,*.png,*.xpm,*.gif,
-" " Ignore python artifacts
-" set wildignore+=*.pyc,*/.tox/*,*.egg-info/*,*.egg/*
 
 " ========= Programming ===========
+
 " Some file types should wrap their text
 function! s:setupWrapping()
     set wrap
     set linebreak
-    set textwidth=72
+    set textwidth=80
+    set formatoptions=cq
+    set wrapmargin=0
     set nolist
 endfunction
 
@@ -176,51 +170,45 @@ autocmd FileType dosini set commentstring=#\ %s
 "for ruby, autoindent with two spaces, always expand tabs
 autocmd FileType ruby,haml,eruby,yaml,html,htmldjango,mako,javascript,sass,cucumber set ai sw=2 sts=2 et
 
-
-" Indent p tags
-" autocmd FileType html,eruby,mako,htmldjango if g:html_indent_tags !~ '\\|p\>' | let g:html_indent_tags .= '\|p\|li\|dt\|dd' | endif
-
-" supertab
-let g:SuperTabDefaultCompletionType = "context"
-" set completeopt=menuone,longest,preview
-
 " Call onmicomplete using ,,
 inoremap <leader>, <C-x><C-o>
-
-map <Leader>] <Plug>MakeGreen " change from <Leader>t to <Leader>]
 
 " Set mako filetype
 autocmd BufRead,BufNewFile *.mak set filetype=mako
 
 " Treat JSON files like JavaScript
-autocmd BufNewFile,BufRead *.json set ft=javascript
+autocmd BufNewFile,BufRead *.json set filetype=javascript
 
+augroup python_configs
+    " Remove ALL autocommands of the current group.
+    autocmd!
+    " Add  to new filetypes
+    autocmd FileType python set textwidth=80 colorcolumn=+1
+    " make Python follow PEP8 for whitespace (
+    "     http://www.python.org/dev/peps/pep-0008/ )
+    autocmd FileType python setlocal softtabstop=4 tabstop=4 shiftwidth=4
 
-" Remember last location in file, but not for commit messages.
-" see :help last-position-jump
-autocmd BufReadPost * if &filetype !~ '^git\c' && line("'\"") > 0 && line("'\"") <= line("$")
-     \| exe "normal! g`\"" | endif
+    " GRB: Python settings
+    autocmd FileType python set sw=4 sts=4 et
 
-" make Python follow PEP8 for whitespace (
-"     http://www.python.org/dev/peps/pep-0008/ )
-autocmd FileType python setlocal softtabstop=4 tabstop=4 shiftwidth=4
-" GRB: Python settings
-autocmd FileType python set sw=4 sts=4 et
+    autocmd FileType python map <silent> K :call ShowPyDoc(expand("<cword>"), 1)<CR>
+    autocmd FileType python map <buffer> <leader>w :call Flake8()<CR>
 
-autocmd FileType python map <silent> K :call ShowPyDoc(expand("<cword>"), 1)<CR>
-autocmd FileType python map <buffer> <leader>w :call Flake8()<CR>
+    autocmd FileType python " Mark text width
 
-" Autocomplete python methods
-" autocmd FileType python set omnifunc=pythoncomplete#Complete
+    " Autocomplete python methods
+    " autocmd FileType python set omnifunc=pythoncomplete#Complete
 
-" Disable python folding
- let g:pymode_folding = 0
+    " Disable python folding
+    let g:pymode_folding = 0
 
-" Key for set/unset breakpoint
-let g:pymode_breakpoint_key = '<leader>sb'
+    " Key for set/unset breakpoint
+    let g:pymode_breakpoint_key = '<leader>sb'
 
-" Do not load run code plugin
-let g:pymode_run = 0
+    " Do not load run code plugin
+    let g:pymode_run = 0
+augroup END
+
 
 " Use sparkup for other types
 augroup sparkup_types
@@ -245,14 +233,6 @@ endif
 autocmd BufWinLeave * silent! mkview
 autocmd BufWinEnter * silent! loadview
 
-" Make current directory todo into Pomodoro tracker
-function! UseProjectToDoAsPomodoroFile()
-    if filereadable("TODO")
-        let g:Pomo_ToDoTodayFilePath = expand("%:p:h") . '/TODO'
-        let g:Pomo_ArchiveFilePath = expand("%:p:h") . '/DONE'
-    endif
-endfunction
-
-call UseProjectToDoAsPomodoroFile()
-
-map ,p :PomodoroToDoToday<CR>
+" Mark text width
+set textwidth=80
+set colorcolumn=+1

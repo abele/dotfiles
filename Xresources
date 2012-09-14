@@ -77,8 +77,8 @@
 *color15:               S_base3
 
 
-URxvt.font: xft:Inconsolata:pixelsize=14
-URxvt.boldFont: xft:Inconsolata:pixelsize=14:style=Bold
+urxvt.font: xft:inconsolata:pixelsize=18
+urxvt.boldfont: xft:inconsolata:pixelsize=18:style=bold
 
 URxvt*borderLess:           false
 URxvt*externalBorder:       0
