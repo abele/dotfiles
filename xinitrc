@@ -8,15 +8,7 @@ nitrogen --restore &
 xset -b # disable bell
 eval `/usr/bin/ssh-agent`
 
-if test -f /usr/lib/openssh/x11-ssh-askpass # Archlinux
-then
-	SSH_ASKPASS=/usr/lib/openssh/x11-ssh-askpass ssh-add < /dev/null
-fi
-
-if test -f /usr/lib/ssh/x11-ssh-askpass # Debian
-then
-	SSH_ASKPASS=/usr/lib/ssh/x11-ssh-askpass ssh-add < /dev/null
-fi
+SSH_ASKPASS=x11-ssh-askpass ssh-add < /dev/null
 
 xmodmap ~/.Xmodmap
 
