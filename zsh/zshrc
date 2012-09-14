@@ -41,7 +41,7 @@ setopt share_history
 # Enable virtualenvwrapper
 export WORKON_HOME=$HOME/.virtualenvs
 export PROJECT_HOME=$HOME/Devel
-source /usr/local/bin/virtualenvwrapper.sh
+source /usr/bin/virtualenvwrapper.sh
 
 # Make pip work with virtualenvwrapper
 export PIP_DOWNLOAD_CACHE=$HOME/.pip/cache
@@ -50,8 +50,8 @@ export PIP_RESPECT_VIRTUALENV=true
 export PIP_REQUIRE_VIRTUALENV=true
 
 # Use vim as default editor
-export EDITOR=/usr/local/bin/vim
-export GIT_EDITOR=/usr/local/bin/vim
+export EDITOR=`which vim`
+export GIT_EDITOR="$EDITOR"
 
 # Setup rvm
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" # Load RVM function
@@ -87,3 +87,8 @@ source ~/.zsh/plugins/syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # Do not freeze terminal on Ctrl+s
 stty stop ''
+
+# Load python virtualenv environment
+work(){
+    source env/bin/activate
+}
