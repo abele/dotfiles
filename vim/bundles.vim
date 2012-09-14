@@ -17,7 +17,6 @@ Bundle 'Lokaltog/vim-easymotion'
 Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'kien/ctrlp.vim'
-Bundle 'ervandew/supertab'
 Bundle 'Lokaltog/vim-powerline'
 
 " vim-snipmate and its dependencies
@@ -40,6 +39,7 @@ Bundle 'klen/vim-jsmode'
 Bundle 'sophacles/vim-bundle-mako'
 
 Bundle 'sjl/gundo.vim'
+Bundle 'mileszs/ack.vim'
 
 filetype plugin indent on     " required!
 filetype plugin on
