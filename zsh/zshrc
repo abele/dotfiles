@@ -34,6 +34,15 @@ export SAVEHIST=$HISTSIZE
 # Use vi key bindings
 bindkey -v
 
+# Show vi mode
+function zle-line-init zle-keymap-select {
+    RPS1="${${KEYMAP/vicmd/-- NORMAL --}/(main|viins)/-- INSERT --}"
+    RPS2=$RPS1
+    zle reset-prompt
+}
+zle -N zle-line-init
+zle -N zle-keymap-select
+
 # Share history betwean instances
 setopt inc_append_history
 setopt share_history
