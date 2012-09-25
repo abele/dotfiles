@@ -2,8 +2,6 @@
 # Taken from:
 #	https://raw.github.com/kaihendry/Kai-s--HOME/master/.xinitrc
 #
-# Restore last wallpaper
-nitrogen --restore &
 
 xset -b # disable bell
 
@@ -36,10 +34,6 @@ fi
 xmodmap ~/.Xmodmap
 
 xrdb -merge $HOME/.Xresources
-
-# Use both screens
-xrandr --output VGA-1 --right-of DVI-I-1
-
 
 source ~/local/bin/custom-xinitrc-settings
 
