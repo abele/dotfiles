@@ -236,3 +236,5 @@ autocmd BufWinEnter * silent! loadview
 " Mark text width
 set textwidth=80
 set colorcolumn=+1
+
+set t_ti= t_te=
