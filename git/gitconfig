@@ -51,4 +51,4 @@
     tool = vimdiff
 
 [core]
-	excludesfile = /home/janis.abele/.gitignore
+	excludesfile = /home/abele/.gitignore_global

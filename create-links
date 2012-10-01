@@ -25,7 +25,7 @@ ln -s -b -v -T $BASE_DIR/zsh/zshprofile ~/.zshprofile
 
 ln -s -b -v -T $BASE_DIR/git/gitconfig ~/.gitconfig
 ln -s -b -v -T $BASE_DIR/git/githelpers ~/.githelpers
-ln -s -b -v -T $BASE_DIR/git/gitignore ~/.gitignore
+ln -s -b -v -T $BASE_DIR/git/gitignore_global ~/.gitignore_global
 
 ln -s -b -v -T $BASE_DIR/ctags/ctags ~/.ctags
 
