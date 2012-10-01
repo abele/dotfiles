@@ -2,7 +2,7 @@
 source ~/.vim/bundles.vim
 
 " ======= Colorscheme ======
-set background=light
+set background=dark
 syntax enable
 
 " Add matcher style so it is not rewriten by color scheme
@@ -236,3 +236,10 @@ autocmd BufWinEnter * silent! loadview
 " Mark text width
 set textwidth=80
 set colorcolumn=+1
+
+" Show absalute line numbers when in insert mode
+autocmd InsertEnter * :set number
+autocmd InsertLeave * :set relativenumber
+
+" When forgot to use sudo
+cmap w!! w !sudo tee % >/dev/null
