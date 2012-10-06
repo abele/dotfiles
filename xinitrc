@@ -2,6 +2,9 @@
 # Taken from:
 #	https://raw.github.com/kaihendry/Kai-s--HOME/master/.xinitrc
 #
+
+xset -b # disable bell
+
 # Start ssh agent {
 SSH_ENV="$HOME/.ssh/environment"
 
@@ -25,19 +28,13 @@ if [ -f "${SSH_ENV}" ]; then
 else
      start_agent;
 fi
-source ~/bin/start-ssh-agent
 
 # }
-
-SSH_ASKPASS=x11-ssh-askpass ssh-add < /dev/null
-
-xset -b # disable bell
 
 xmodmap ~/.Xmodmap
 
 xrdb -merge $HOME/.Xresources
 
-# Use both screens
-xrandr --output VGA-1 --right-of DVI-I-1
+source ~/local/bin/custom-xinitrc-settings
 
 exec awesome
