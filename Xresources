@@ -120,8 +120,8 @@
 
 !! }
 
-URxvt.font: xft:inconsolata:pixelsize=22
-URxvt.boldfont: xft:inconsolata:pixelsize=22:style=bold
+URxvt.font: xft:inconsolata:pixelsize=18
+URxvt.boldfont: xft:inconsolata:pixelsize=18:style=bold
 
 Xft.dpi:96
 Xft.antialias: true
