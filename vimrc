@@ -237,9 +237,8 @@ autocmd BufWinEnter * silent! loadview
 set textwidth=80
 set colorcolumn=+1
 
-" Show absalute line numbers when in insert mode
-autocmd InsertEnter * :set number
-autocmd InsertLeave * :set relativenumber
-
 " When forgot to use sudo
 cmap w!! w !sudo tee % >/dev/null
+
+" Do not clear terminal after exiting vim
+set t_ti= t_te=
