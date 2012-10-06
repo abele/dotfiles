@@ -38,7 +38,10 @@ Bundle 'klen/vim-jsmode'
 
 Bundle 'sophacles/vim-bundle-mako'
 
+Bundle 'sjl/gundo.vim'
 Bundle 'mileszs/ack.vim'
+
+Bundle 'vim-scripts/nginx.vim'
 
 filetype plugin indent on     " required!
 filetype plugin on
