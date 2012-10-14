@@ -205,6 +205,9 @@ augroup python_configs
     " Key for set/unset breakpoint
     let g:pymode_breakpoint_key = '<leader>sb'
 
+    " Do not ignore PEP8 rules
+    let g:pymode_lint_ignore = ""
+
     " Do not load run code plugin
     let g:pymode_run = 0
 augroup END
@@ -239,6 +242,3 @@ set colorcolumn=+1
 
 " When forgot to use sudo
 cmap w!! w !sudo tee % >/dev/null
-
-" Do not clear terminal after exiting vim
-set t_ti= t_te=
