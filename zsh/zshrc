@@ -31,6 +31,7 @@ export LESSCOLORIZER=pygmentize
 export HISTSIZE=100000
 export HISTFILE="$HOME/.history"
 export SAVEHIST=$HISTSIZE
+setopt hist_ignore_all_dups
 # Use vi key bindings
 bindkey -v
 
