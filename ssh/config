@@ -1,4 +1,16 @@
 
+Host workTunnel
+    HostName comeandcatch.com
+    User ja
+    Port 22
+
+    LocalForward localhost:2220 192.168.0.103:22
+
+Host japc
+    HostName localhost
+    User abele
+    Port 2220
+
 Host cc
     HostName comeandcatch.com
     User ja
