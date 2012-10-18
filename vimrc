@@ -116,8 +116,8 @@ map <leader>t :CtrlPTag<CR>
 
 " Ignore verstion control artifacts
 let g:ctrlp_custom_ignore = {
-\ 'dir':  '\.git$\|\.hg$\|\.svn$\|\.egg$\|\.egg-info$\|env$',
-\ 'file': '\.exe$\|\.so$\|\.dll$\|\.pyc$\|\.png$\|\.jpg$',
+\ 'dir': '\.git$\|\.hg$\|\.svn$\|\.egg$\|\.egg-info$\|env$\|\.tox$\|\.ropeproject$\|data$',
+\ 'file': '\.exe$\|\.so$\|\.dll$\|\.pyc$\|\.png$\|\.jpg$\|\.tags$\|tags$',
 \ 'link': 'SOME_BAD_SYMBOLIC_LINKS',
 \ }
 
