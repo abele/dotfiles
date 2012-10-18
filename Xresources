@@ -151,7 +151,7 @@ URxvt.perl-lib: /home/abele/.config/urxvt/lib/
 URxvt.matcher.pattern.2:  \\B(/\\S+?):(\\d+)(?=:|$)
 URxvt.matcher.launcher.2: vim +$2 $1
 
-URxvt*perl-ext-common: default,matcher,keyboard-select
+URxvt*perl-ext-common: default,matcher,keyboard-select,clipboard
 URxvt.urlLauncher: chromium
 URxvt.matcher.button: 1
 
@@ -161,3 +161,12 @@ URxvt.keysym.M-Delete: perl:matcher:list
 !! Keyboard selection
 URxvt.keysym.M-a: perl:keyboard-select:activate
 URxvt.keysym.M-s: perl:keyboard-select:search
+
+
+!! Use clipboard
+URxvt.keysym.M-c:   perl:clipboard:copy
+URxvt.keysym.M-v:   perl:clipboard:paste
+URxvt.keysym.M-C-v: perl:clipboard:paste_escaped
+
+URxvt.clipboard.copycmd:  xclip -i -selection clipboard
+URxvt.clipboard.pastecmd: xclip -o -selection clipboard
