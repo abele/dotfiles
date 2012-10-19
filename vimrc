@@ -191,7 +191,10 @@ augroup python_configs
     " GRB: Python settings
     autocmd FileType python set sw=4 sts=4 et
 
-    autocmd FileType python map <silent> K :call ShowPyDoc(expand("<cword>"), 1)<CR>
+    " Use Rope documentation preview
+    autocmd FileType python unmap <buffer> K
+    autocmd FileType python noremap <silent> K :RopeShowDoc<CR>
+
     autocmd FileType python map <buffer> <leader>w :call Flake8()<CR>
 
     autocmd FileType python " Mark text width
@@ -210,6 +213,7 @@ augroup python_configs
 
     " Do not load run code plugin
     let g:pymode_run = 0
+
 augroup END
 
 
