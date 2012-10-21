@@ -214,6 +214,8 @@ augroup python_configs
     " Do not load run code plugin
     let g:pymode_run = 0
 
+    map <leader>ga :CtrlP */tests/<CR>
+
 augroup END
 
 
@@ -246,3 +248,4 @@ set colorcolumn=+1
 
 " When forgot to use sudo
 cmap w!! w !sudo tee % >/dev/null
+
