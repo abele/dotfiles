@@ -248,4 +248,3 @@ set colorcolumn=+1
 
 " When forgot to use sudo
 cmap w!! w !sudo tee % >/dev/null
-

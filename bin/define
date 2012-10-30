@@ -1,0 +1,3 @@
+#!/bin/bash
+
+chromium "www.google.com/search?q=define $1"
