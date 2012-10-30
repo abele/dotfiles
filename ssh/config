@@ -5,6 +5,7 @@ Host workTunnel
     Port 22
 
     LocalForward localhost:2220 192.168.0.103:22
+    LocalForward localhost:8888 192.168.0.103:8080
 
 Host japc
     HostName localhost
