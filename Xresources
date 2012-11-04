@@ -89,7 +89,14 @@
 
 !! black dark/light
 *color0:                S_base02
+
+!! Fix yeoman invisible text problem
+!!https://github.com/altercation/solarized/issues/220
+#define hack_color #1c1c1c
+!!#define hack_color #8e8e8e
+!!*color8: hack_color
 *color8:                S_base03
+
 
 !! red dark/light
 *color1:                S_red
