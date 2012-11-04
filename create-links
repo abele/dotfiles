@@ -37,6 +37,8 @@ ln -s -b -v -T $BASE_DIR/vimify/inputrc ~/.inputrc
 
 ln -s -b -v -T $BASE_DIR/xinitrc ~/.xinitrc
 
+ln -s -b -v -T $BASE_DIR/tmux.conf ~/.tmux.conf
+
 [ ! -d ~/.irssi ] &&  mkdir ~/.irssi
 cp -b $BASE_DIR/irssi/config ~/.irssi/config
 
