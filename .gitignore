@@ -4,3 +4,4 @@ vim/.netrwhist
 *.swp
 vim/view
 vim/tmp
+vim/bundle/
