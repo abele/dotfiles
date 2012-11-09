@@ -1,0 +1,28 @@
+#!/bin/bash
+# Lock screen and log time.
+#
+
+set -e
+
+LOG_FILE=$HOME/.slock.log
+
+main(){
+    checkin
+    slock
+    checkout
+}
+
+logtime(){
+    NOW=$(date +"%Y.%m.%d %T")
+    echo $NOW $ACTION >> $LOG_FILE
+}
+
+checkin(){
+    logtime checkin
+}
+
+checkout(){
+    logtime checkout
+}
+
+main
