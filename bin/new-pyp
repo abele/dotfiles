@@ -1,0 +1,59 @@
+#!/bin/bash
+
+main() {
+    new-env
+    source env/bin/activate
+
+    pip install nose nose-quickunit expecter nose-progressive
+
+    mkdir src
+    touch src/__init__.py
+
+    mkdir tests
+    touch tests/__init__.py
+
+    touch README.rst
+
+    cat > Makefile <<EOL
+NOSE=env/bin/nosetests
+
+test:
+	\$(NOSE) ./tests
+
+test-change:
+	\$(NOSE) --with-quickunit ./tests/*
+EOL
+
+    cat > setup.cfg <<EOL
+[nosetests]
+testMatch = ((?:^|[b_.-])(:?test_|describe_|it_|they_))
+with-progressive = 1
+EOL
+
+    cat > tests/test_example.py <<EOL
+
+
+class describe_some_class(object):
+    def it_works(self):
+        raise NotImplementedError('Test hav not been implemented!')
+EOL
+
+    cat > .gitignore <<EOL
+env/
+dist/
+
+*.pyc
+*.swp
+*~
+EOL
+
+    git init
+    git add .gitignore tests/__init__.py src/__init__.py README.rst Makefile \
+        setup.cfg
+
+    git commit --verbose
+
+    make test
+}
+
+main
