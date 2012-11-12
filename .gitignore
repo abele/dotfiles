@@ -2,6 +2,6 @@ vim/.netrwhist
 *.pyc
 *~
 *.swp
-vim/view
-vim/tmp
+vim/view/
+vim/tmp/
 vim/bundle/
