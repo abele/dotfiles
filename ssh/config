@@ -1,6 +1,6 @@
 
 Host workTunnel
-    HostName comeandcatch.com
+    HostName 159.148.93.4
     User ja
     Port 22
 
@@ -13,7 +13,7 @@ Host japc
     Port 2220
 
 Host cc
-    HostName comeandcatch.com
+    HostName 159.148.93.4
     User ja
 
 Host noobser
