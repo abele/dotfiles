@@ -4,7 +4,7 @@ main() {
     new-env
     source env/bin/activate
 
-    pip install nose nose-quickunit expecter nose-progressive
+    pip install nose nose-quickunit expecter nose-progressive mock
 
     mkdir src
     touch src/__init__.py
@@ -28,6 +28,22 @@ EOL
 [nosetests]
 testMatch = ((?:^|[b_.-])(:?test_|describe_|it_|they_))
 with-progressive = 1
+progressive-advisories = 1
+EOL
+
+# Patch nose-progressive to support work-in-progress decorator
+patch -p0 <<EOL
+--- env/lib/python2.7/site-packages/noseprogressive/result.py	2012-11-13 22:17:31.000000000 +0200
++++ env/lib/python2.7/site-packages/noseprogressive/result_fixed.py	2012-11-13 22:22:45.426033265 +0200
+@@ -140,7 +140,7 @@
+         # Python 2.7 users get a little bonus: the reason the test was skipped.
+         if reason and self._options.show_advisories:
+             with self.bar.dodging():
+-                self.stream.writeln(reason)
++                self.stream.writeln(unicode(reason))
+ 
+     def addError(self, test, err):
+         # We don't read this, but some other plugin might conceivably expect it
 EOL
 
     cat > tests/test_example.py <<EOL
@@ -36,6 +52,28 @@ EOL
 class describe_some_class(object):
     def it_works(self):
         raise NotImplementedError('Test hav not been implemented!')
+EOL
+
+    cat > src/toolbox.py <<EOL
+from functools import wraps
+from nose.plugins.attrib import attr
+from nose.plugins.skip import SkipTest
+
+
+def fail(message):
+    raise AssertionError(message)
+
+
+def wip(f):
+    @wraps(f)
+    def run_test(*args, **kwargs):
+        try:
+            f(*args, **kwargs)
+        except Exception as e:
+            raise SkipTest("WIP test failed: " + str(e))
+        fail("test passed but marked as work in progress")
+
+    return attr('wip')(run_test)
 EOL
 
     cat > .gitignore <<EOL
@@ -47,9 +85,11 @@ dist/
 *~
 EOL
 
+    pip freeze > requirements.txt
+
     git init
     git add .gitignore tests/__init__.py src/__init__.py README.rst Makefile \
-        setup.cfg
+        setup.cfg requirements.txt
 
     git commit --verbose
 
