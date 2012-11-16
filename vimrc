@@ -121,8 +121,6 @@ let g:ctrlp_custom_ignore = {
 \ 'link': 'SOME_BAD_SYMBOLIC_LINKS',
 \ }
 
-" Show line numbers relative to current position
-set relativenumber
 
 " No cursor keys
 map <up> <nop>
@@ -248,3 +246,6 @@ set colorcolumn=+1
 
 " When forgot to use sudo
 cmap w!! w !sudo tee % >/dev/null
+
+" Show line numbers relative to current position
+set relativenumber
