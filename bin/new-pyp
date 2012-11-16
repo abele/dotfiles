@@ -26,7 +26,7 @@ EOL
 
     cat > setup.cfg <<EOL
 [nosetests]
-testMatch = ((?:^|[b_.-])(:?test_|describe_|it_|they_))
+testMatch = ((?:^|[b_.-])(:?test_|describe_|it_|its_|they_))
 with-progressive = 1
 progressive-advisories = 1
 EOL
