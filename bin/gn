@@ -24,7 +24,7 @@ def get_lines(diff_lines):
 if __name__ == '__main__':
     diff_lines = list(fileinput.input())
     added_lines, removed_lines = get_lines(diff_lines)
-    print '%i lines of diff' % len(diff_lines)
-    print '%i lines added' % len(added_lines)
-    print '%i lines removed' % len(removed_lines)
-    print '%+i lines net change' % (len(added_lines) - len(removed_lines))
+    print('{0} lines of diff'.format(len(diff_lines)))
+    print('{0} lines added'.format(len(added_lines)))
+    print('{0} lines removed'.format(len(removed_lines)))
+    print('{0} lines net change'.format(len(added_lines) - len(removed_lines)))
