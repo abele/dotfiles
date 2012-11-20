@@ -128,14 +128,14 @@
 
 !! }
 
-URxvt.font: xft:inconsolata:pixelsize=18
-URxvt.boldfont: xft:inconsolata:pixelsize=18:style=bold
+URxvt.font: xft:DejaVu Sans Mono:pixelsize=16
+URxvt.boldfont: xft:DejaVu Sans Mono:pixelsize=16:style=bold
 
 Xft.dpi:96
-Xft.antialias: true
-Xft.hinting: true
+Xft.hinting: 1
+Xft.lcdfilter: lcddefault
 Xft.hintstyle: hintfull
-Xft.lcdfilter: none
+Xft.antialias: 1
 Xft.rgba: rba
 
 URxvt*borderLess:           false
