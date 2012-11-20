@@ -43,7 +43,6 @@ Bundle 'mileszs/ack.vim'
 
 Bundle 'vim-scripts/nginx.vim'
 Bundle 'pangloss/vim-javascript'
-Bundle 'alfredodeza/khuno.vim'
 
 filetype plugin indent on     " required!
 filetype plugin on
