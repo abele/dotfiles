@@ -14,6 +14,7 @@ main(){
 
 logtime(){
     NOW=$(date +"%Y.%m.%d %T")
+    ACTION=$1
     echo $NOW $ACTION >> $LOG_FILE
 }
 
