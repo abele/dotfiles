@@ -189,11 +189,14 @@ augroup python_configs
     " GRB: Python settings
     autocmd FileType python set sw=4 sts=4 et
 
-    " Use Rope documentation preview
-    autocmd FileType python unmap <buffer> K
-    autocmd FileType python noremap <silent> K :RopeShowDoc<CR>
+    " Load show documentation plugin
+    let g:pymode_doc = 1
 
-    autocmd FileType python map <buffer> <leader>w :call Flake8()<CR>
+    " Key for show python documentation
+    let g:pymode_doc_key = 'K'
+
+    " Load pylint code plugin, use khuno
+    let g:pymode_lint = 0
 
     autocmd FileType python " Mark text width
 
@@ -249,3 +252,38 @@ cmap w!! w !sudo tee % >/dev/null
 
 " Show line numbers relative to current position
 set relativenumber
+
+hi GreenBar term=reverse ctermfg=white ctermbg=green guifg=white guibg=green
+hi RedBar   term=reverse ctermfg=white ctermbg=red guifg=white guibg=red
+
+" Output colorfull message in vim cmd bar
+function! s:Bar(type, msg)
+    if a:type == "red"
+        echohl RedBar
+    else
+        echohl GreenBar
+    endif
+    echon a:msg repeat(" ", &columns - strlen(a:msg) - 1)
+    echohl None
+endfunction
+
+let g:fe_command = "make test"
+
+function! RunFancyTests()
+    let test_command = g:fe_command
+    let results = system(test_command)
+
+    let exit_code = split(results, '\n')
+    echo results
+
+    if v:shell_error
+        call s:Bar("red", 'Error! '.exit_code[-1])
+    else
+        call s:Bar("green", 'OK! '.exit_code[-1])
+    endif
+endfunction
+
+com! RunFancyTests call RunFancyTests()
+map ,a :wa\|:RunFancyTests<CR>
+
+let g:Powerline_colorscheme="solarized256"
