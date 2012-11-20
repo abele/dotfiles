@@ -4,7 +4,7 @@ main() {
     new-env
     source env/bin/activate
 
-    pip install nose nose-quickunit expecter nose-progressive mock
+    pip install --use-mirrors nose nose-quickunit expecter nose-progressive mock
 
     mkdir src
     touch src/__init__.py
