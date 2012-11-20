@@ -195,8 +195,7 @@ augroup python_configs
     " Key for show python documentation
     let g:pymode_doc_key = 'K'
 
-    " Load pylint code plugin, use khuno
-    let g:pymode_lint = 0
+    let g:pymode_lint = 1
 
     autocmd FileType python " Mark text width
 
