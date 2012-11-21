@@ -16,9 +16,13 @@ main() {
 
     cat > Makefile <<EOL
 NOSE=env/bin/nosetests
+NOW=\$(shell date +"%Y.%m.%d %T")
 
 test:
-	\$(NOSE) ./tests
+	\$(NOSE) ./tests; \\
+	status=\$\$?; \\
+	echo "\"\$(NOW)\"; \"\$\$status\"" >> test_pattern.log; \\
+	exit \$\$status
 
 test-change:
 	\$(NOSE) --with-quickunit ./tests/*
@@ -83,6 +87,7 @@ dist/
 *.pyc
 *.swp
 *~
+*.log
 EOL
 
     pip freeze > requirements.txt
@@ -91,9 +96,7 @@ EOL
     git add .gitignore tests/__init__.py src/__init__.py README.rst Makefile \
         setup.cfg requirements.txt
 
-    git commit --verbose
-
-    make test
+    $EDITOR tests/test_example.py
 }
 
 main
