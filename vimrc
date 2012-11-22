@@ -9,6 +9,8 @@ syntax enable
 autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
 colorscheme solarized
 
+set t_ti= t_te=
+
 " ======= Convenience ======
 
 " Use comma as Leader key
@@ -23,9 +25,6 @@ autocmd FileType vim nnoremap K :exe ":help ".expand("<cword>")<CR>
 
 " Toggle paste indention
 set pastetoggle=<F2>
-
-" Yank to system clipboard
-map <leader>y "*y
 
 " YankRing settings
 let g:yankring_history_file = '.yankring-history'
@@ -47,10 +46,6 @@ set showmode
 
 " Make tab completion for files/buffers act like bash
 set wildmenu
-
-" Don't show scroll bars in the GUI
-set guioptions-=L
-set guioptions-=r
 
 " We have to have a winheight bigger than we want to set winminheight. But if
 " we set winheight to be huge before winminheight, the winminheight set will
@@ -100,12 +95,11 @@ set tabstop=4
 set shiftwidth=4
 set softtabstop=4
 
-" Use tab to match bracket pair.
-nnoremap <tab> %
-vnoremap <tab> %
-
-
 " ========= Navigation ======
+" Map ,e and ,v to open files in the same directory as the current file
+cnoremap %% <C-R>=expand('%:h').'/'<cr>
+map <leader>e :edit %%
+map <leader>v :view %%
 
 " Show files
 map <leader>f :CtrlP<CR>
@@ -114,13 +108,14 @@ map <leader>b :CtrlPBuffer<CR>
 " Show tags
 map <leader>t :CtrlPTag<CR>
 
+map <leader>ga :CtrlP */tests/<CR>
+
 " Ignore verstion control artifacts
 let g:ctrlp_custom_ignore = {
 \ 'dir': '\.git$\|\.hg$\|\.svn$\|\.egg$\|\.egg-info$\|env$\|\.tox$\|\.ropeproject$\|data$',
 \ 'file': '\.exe$\|\.so$\|\.dll$\|\.pyc$\|\.png$\|\.jpg$\|\.tags$\|tags$',
 \ 'link': 'SOME_BAD_SYMBOLIC_LINKS',
 \ }
-
 
 " No cursor keys
 map <up> <nop>
@@ -138,11 +133,11 @@ map <C-l> <C-w>l
 " for backgrounding buffers
 set hidden
 
+" Navigate back and forth buffers
 map <silent> <leader>z :bp<CR>
 map <silent> <leader>x :bn<CR>
 
 " ========= Programming ===========
-
 " Some file types should wrap their text
 function! s:setupWrapping()
     set wrap
@@ -171,6 +166,9 @@ autocmd FileType ruby,haml,eruby,yaml,html,htmldjango,mako,javascript,sass,cucum
 " Call onmicomplete using ,,
 inoremap <leader>, <C-x><C-o>
 
+" Show long lists in omnicompletion
+set completeopt=menuone,menu,longest
+
 " Set mako filetype
 autocmd BufRead,BufNewFile *.mak set filetype=mako
 
@@ -184,38 +182,30 @@ augroup python_configs
     autocmd FileType python set textwidth=80 colorcolumn=+1
     " make Python follow PEP8 for whitespace (
     "     http://www.python.org/dev/peps/pep-0008/ )
-    autocmd FileType python setlocal softtabstop=4 tabstop=4 shiftwidth=4
+    autocmd FileType python setlocal softtabstop=4 tabstop=4 shiftwidth=4 expandtab
 
-    " GRB: Python settings
-    autocmd FileType python set sw=4 sts=4 et
-
-    " Load show documentation plugin
-    let g:pymode_doc = 1
-
-    " Key for show python documentation
-    let g:pymode_doc_key = 'K'
-
-    let g:pymode_lint = 1
-
-    autocmd FileType python " Mark text width
-
-    " Autocomplete python methods
-    " autocmd FileType python set omnifunc=pythoncomplete#Complete
-
-    " Disable python folding
-    let g:pymode_folding = 0
-
-    " Key for set/unset breakpoint
-    let g:pymode_breakpoint_key = '<leader>sb'
-
-    " Do not ignore PEP8 rules
-    let g:pymode_lint_ignore = ""
-
-    " Do not load run code plugin
+    let g:pymode_doc = 0
     let g:pymode_run = 0
 
-    map <leader>ga :CtrlP */tests/<CR>
+    let g:pymode_lint = 1
+    let g:pymode_lint_ignore = ""
 
+    let g:pymode_folding = 0
+    let g:pymode_paths = ['./env']
+
+    " Load rope plugin
+    let g:pymode_rope = 1
+    " Auto create and open ropeproject
+    let g:pymode_rope_vim_completion = 1
+    let g:pymode_rope_auto_project = 1
+    let g:pymode_rope_sorted_completions = 1
+    let g:pymode_rope_extended_complete = 1
+    let g:pymode_rope_autoimport_modules = ["os","shutil","datetime"]
+
+    " Auto fix vim python paths if virtualenv enabled
+    let g:pymode_virtualenv = 1
+
+    autocmd FileType python " Mark text width
 augroup END
 
 " Use sparkup for other types
@@ -287,6 +277,14 @@ function! RunFancyTests()
         call s:Bar("red", 'Error! '.exit_code[-1])
     else
         call s:Bar("green", 'OK! '.exit_code[-1])
+    endif
+endfunction
+
+function! ShowReward()
+    if v:shell_error
+        call s:Bar("red", 'OH NOOO!')
+    else
+        call s:Bar("green", 'OK!')
     endif
 endfunction
 
