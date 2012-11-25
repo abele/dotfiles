@@ -287,8 +287,11 @@ function! ShowReward()
         call s:Bar("green", 'OK!')
     endif
 endfunction
+command! ShowReward call ShowReward()
 
-com! RunFancyTests call RunFancyTests()
+command! RunFancyTests call RunFancyTests()
 map ,a :wa\|:RunFancyTests<CR>
 
 let g:Powerline_colorscheme="solarized256"
+
+map <silent><F3> :TagbarToggle<CR>
