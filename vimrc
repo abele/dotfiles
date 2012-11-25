@@ -193,6 +193,9 @@ augroup python_configs
     let g:pymode_folding = 0
     let g:pymode_paths = ['./env']
 
+    " Key for set/unset breakpoint
+    let g:pymode_breakpoint_key = '<leader>sb'
+
     " Load rope plugin
     let g:pymode_rope = 1
     " Auto create and open ropeproject
