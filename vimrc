@@ -211,6 +211,12 @@ augroup python_configs
     autocmd FileType python " Mark text width
 augroup END
 
+" Use sparkup for other types
+augroup javascript_config
+    " Remove ALL autocommands of the current group.
+    autocmd!
+    autocmd FileType javascript set relativenumber
+augroup END
 
 " Use sparkup for other types
 augroup sparkup_types
@@ -218,6 +224,8 @@ augroup sparkup_types
     autocmd!
     " Add sparkup to new filetypes
     autocmd FileType mako,htmldjango runtime! ftplugin/html/sparkup.vim
+
+    " Show line numbers relative to current position
 augroup END
 " ========== Backup ================
 
@@ -282,8 +290,11 @@ function! ShowReward()
         call s:Bar("green", 'OK!')
     endif
 endfunction
+command! ShowReward call ShowReward()
 
-com! RunFancyTests call RunFancyTests()
+command! RunFancyTests call RunFancyTests()
 map ,a :wa\|:RunFancyTests<CR>
 
 let g:Powerline_colorscheme="solarized256"
+
+map <silent><F3> :TagbarToggle<CR>
