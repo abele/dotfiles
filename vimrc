@@ -1,24 +1,29 @@
+" vim: foldmethod=marker
 " Load bundle configurations
 source ~/.vim/bundles.vim
 
-" ======= Colorscheme ======
+" ======= Colorscheme ====== {{{1
 set background=dark
 syntax enable
 
 " Add matcher style so it is not rewriten by color scheme
 autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
+
 colorscheme solarized
+let g:Powerline_colorscheme="solarized256"
 
 set t_ti= t_te=
 
-" ======= Convenience ======
+" ======= Convenience ====== {{{1
 
 " Use comma as Leader key
 let mapleader=","
 
 " Quickly edit/reload the vimrc file
 nmap <silent> <leader>ev :edit $MYVIMRC<CR>
-nmap <silent> <leader>sv :source $MYVIMRC<CR>:echo $MYVIMRC." reloaded!"<CR>
+if has("autocmd")
+    autocmd! bufwritepost $MYVIMRC source $MYVIMRC
+endif
 
 " Call help for word under cursor in vim files
 autocmd FileType vim nnoremap K :exe ":help ".expand("<cword>")<CR>
@@ -60,12 +65,9 @@ set showtabline=2
 " Window width
 set winwidth=80
 
-" ==========  Search =========
+" ==========  Search ========= {{{1
 
-" Higlight searches
 set hlsearch
-
-" Show matches incrementaly
 set incsearch
 
 function! MapCR()
@@ -78,44 +80,34 @@ call MapCR()
 autocmd! CmdwinEnter * :unmap <cr>
 autocmd! CmdwinLeave * :call MapCR()
 
-" Search case insensitive
 set ignorecase
 set smartcase
-
-" Show matching bracet
 set showmatch
 
-" =========== Editing ========
+" =========== Editing ======== {{{1
 
-" Use spaces for tabs
 set expandtab
-" Count of spaces in tabs
 set tabstop=4
-" Number of spaces for each step in (auto)indent
 set shiftwidth=4
 set softtabstop=4
 
-" ========= Navigation ======
+" ========= Navigation ====== {{{1
 " Map ,e and ,v to open files in the same directory as the current file
 cnoremap %% <C-R>=expand('%:h').'/'<cr>
 map <leader>e :edit %%
 map <leader>v :view %%
 
-" Show files
 map <leader>f :CtrlP<CR>
-" Show buffers
 map <leader>b :CtrlPBuffer<CR>
-" Show tags
 map <leader>t :CtrlPTag<CR>
-
 map <leader>ga :CtrlP */tests/<CR>
 
 " Ignore verstion control artifacts
 let g:ctrlp_custom_ignore = {
-\ 'dir': '\.git$\|\.hg$\|\.svn$\|\.egg$\|\.egg-info$\|env$\|\.tox$\|\.ropeproject$\|data$',
-\ 'file': '\.exe$\|\.so$\|\.dll$\|\.pyc$\|\.png$\|\.jpg$\|\.tags$\|tags$',
-\ 'link': 'SOME_BAD_SYMBOLIC_LINKS',
-\ }
+            \ 'dir': '\.git$\|\.hg$\|\.svn$\|\.egg$\|\.egg-info$\|env$\|\.tox$\|\.ropeproject$\|data$',
+            \ 'file': '\.exe$\|\.so$\|\.dll$\|\.pyc$\|\.png$\|\.jpg$\|\.tags$\|tags$',
+            \ 'link': 'SOME_BAD_SYMBOLIC_LINKS',
+            \ }
 
 " No cursor keys
 map <up> <nop>
@@ -137,7 +129,7 @@ set hidden
 map <silent> <leader>z :bp<CR>
 map <silent> <leader>x :bn<CR>
 
-" ========= Programming ===========
+" ========= Programming =========== {{{1
 " Some file types should wrap their text
 function! s:setupWrapping()
     set wrap
@@ -227,7 +219,7 @@ augroup sparkup_types
 
     " Show line numbers relative to current position
 augroup END
-" ========== Backup ================
+" ========== Backup ================ {{{1
 
 " Store temporary files in a central spot
 set backupdir=~/.vim/tmp
@@ -239,6 +231,8 @@ else
     set backup      " keep a backup file
 endif
 
+
+" ========== MISC ================ {{{1
 " Persist folds
 autocmd BufWinLeave * silent! mkview
 autocmd BufWinEnter * silent! loadview
@@ -253,6 +247,7 @@ cmap w!! w !sudo tee % >/dev/null
 " Show line numbers relative to current position
 set relativenumber
 
+" Style to output green and red bar
 hi GreenBar term=reverse ctermfg=white ctermbg=green guifg=white guibg=green
 hi RedBar   term=reverse ctermfg=white ctermbg=red guifg=white guibg=red
 
@@ -290,11 +285,9 @@ function! ShowReward()
         call s:Bar("green", 'OK!')
     endif
 endfunction
+
 command! ShowReward call ShowReward()
-
 command! RunFancyTests call RunFancyTests()
-map ,a :wa\|:RunFancyTests<CR>
-
-let g:Powerline_colorscheme="solarized256"
 
 map <silent><F3> :TagbarToggle<CR>
+
