@@ -181,6 +181,7 @@ augroup python_configs
 
     let g:pymode_lint = 1
     let g:pymode_lint_ignore = ""
+    let g:pymode_lint_cwindow = 0
 
     let g:pymode_folding = 0
     let g:pymode_paths = ['./env']
