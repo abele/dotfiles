@@ -7,13 +7,14 @@ xset -b # disable bell
 
 # Start ssh agent {
 SSH_ENV="$HOME/.ssh/environment"
+SSH_ASKPASS=x11-ssh-askpass ssh-add < /dev/null
 
 function start_agent {
      echo "Initialising new SSH agent..."
      /usr/bin/ssh-agent | sed 's/^echo/#echo/' > "${SSH_ENV}"
      echo succeeded
      chmod 600 "${SSH_ENV}"
-     . "${SSH_ENV}" > /dev/null
+     source "${SSH_ENV}" > /dev/null
      /usr/bin/ssh-add;
 }
 
