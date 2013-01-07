@@ -36,3 +36,7 @@ Host vbox
 Host jds
     HostName jds
     User jd
+
+Host dasbmc
+    HostName dasbmc
+    User ubuntu
