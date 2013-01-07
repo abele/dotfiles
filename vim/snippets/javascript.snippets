@@ -9,7 +9,7 @@ snippet descr
 	describe('${1:something}', function () {
 		it('${2:works}', function () {
 
-			expect(${3:true}).${4:to.be(true)};
+			expect(${3:true}).${4:to.be.false};
 		});
 	});
 # Add TODO note
@@ -17,7 +17,7 @@ snippet TODO
 	// TODO: ${1}
 # RequireJs module definition
 snippet def
-	define(["${1:module}"], function (${2:ModuleName}) {
+	define(['${1:module}'], function (${2:ModuleName}) {
 	    'use strict';
 	    ${3};
 	});
