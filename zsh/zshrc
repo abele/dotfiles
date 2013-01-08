@@ -53,6 +53,9 @@ export WORKON_HOME=$HOME/.virtualenvs
 export PROJECT_HOME=$HOME/Devel
 source /usr/bin/virtualenvwrapper.sh
 
+# Load ssh env
+source $HOME/.ssh/environment
+
 # Make pip work with virtualenvwrapper
 export PIP_DOWNLOAD_CACHE=$HOME/.pip/cache
 export PIP_VIRTUALENV_BASE=$WORKON_HOME
