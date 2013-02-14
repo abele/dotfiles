@@ -14,7 +14,7 @@ Bundle 'tpope/vim-commentary'
 Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-eunuch'
 Bundle 'Lokaltog/vim-easymotion'
-Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
+Bundle 'mattn/zencoding-vim'
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'kien/ctrlp.vim'
 Bundle 'Lokaltog/vim-powerline'
@@ -42,7 +42,8 @@ Bundle 'sjl/gundo.vim'
 Bundle 'mileszs/ack.vim'
 
 Bundle 'vim-scripts/nginx.vim'
-Bundle 'pangloss/vim-javascript'
+
+Bundle 'gerw/vim-HiLinkTrace'
 
 filetype plugin indent on     " required!
 filetype plugin on
