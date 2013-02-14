@@ -286,3 +286,5 @@ map <silent><F3> :TagbarToggle<CR>
 let g:jsmode = 0
 
 let g:user_zen_leader_key = '<c-e>'
+
+let html_no_rendering=1

@@ -55,7 +55,7 @@ EOL
 
 class describe_some_class(object):
     def it_works(self):
-        raise NotImplementedError('Test hav not been implemented!')
+        raise NotImplementedError('Test have not been implemented!')
 EOL
 
     cat > src/toolbox.py <<EOL

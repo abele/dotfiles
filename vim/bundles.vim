@@ -45,6 +45,8 @@ Bundle 'vim-scripts/nginx.vim'
 
 Bundle 'gerw/vim-HiLinkTrace'
 
+Bundle 'gerw/vim-HiLinkTrace'
+
 filetype plugin indent on     " required!
 filetype plugin on
 
