@@ -4,9 +4,9 @@ Host workTunnel
     User ja
     Port 22
 
-    LocalForward localhost:2220 192.168.0.101:22
-    LocalForward localhost:8888 192.168.0.101:8080
-    LocalForward localhost:9000 192.168.0.101:9000
+    LocalForward localhost:2220 192.168.0.100:22
+    LocalForward localhost:8888 192.168.0.100:8080
+    LocalForward localhost:9000 192.168.0.100:9000
 
 Host japc
     HostName localhost
