@@ -109,6 +109,8 @@ let g:ctrlp_custom_ignore = {
             \ 'link': 'SOME_BAD_SYMBOLIC_LINKS',
             \ }
 
+let g:ctrlp_root_markers = ['Guardfile']
+
 " No cursor keys
 map <up> <nop>
 map <down> <nop>
@@ -204,21 +206,10 @@ augroup python_configs
     autocmd FileType python " Mark text width
 augroup END
 
-" Use sparkup for other types
 augroup javascript_config
     " Remove ALL autocommands of the current group.
     autocmd!
     autocmd FileType javascript set relativenumber
-augroup END
-
-" Use sparkup for other types
-augroup sparkup_types
-    " Remove ALL autocommands of the current group.
-    autocmd!
-    " Add sparkup to new filetypes
-    autocmd FileType mako,htmldjango runtime! ftplugin/html/sparkup.vim
-
-    " Show line numbers relative to current position
 augroup END
 " ========== Backup ================ {{{1
 
@@ -292,3 +283,6 @@ command! RunFancyTests call RunFancyTests()
 
 map <silent><F3> :TagbarToggle<CR>
 
+let g:jsmode = 0
+
+let g:user_zen_leader_key = '<c-e>'
