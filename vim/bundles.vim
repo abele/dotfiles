@@ -44,6 +44,8 @@ Bundle 'mileszs/ack.vim'
 Bundle 'vim-scripts/nginx.vim'
 Bundle 'pangloss/vim-javascript'
 
+Bundle 'gerw/vim-HiLinkTrace'
+
 filetype plugin indent on     " required!
 filetype plugin on
 
