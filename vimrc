@@ -292,3 +292,5 @@ command! RunFancyTests call RunFancyTests()
 
 map <silent><F3> :TagbarToggle<CR>
 
+
+let html_no_rendering=1
