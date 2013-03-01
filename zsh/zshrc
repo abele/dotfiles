@@ -18,7 +18,10 @@ test -s ~/local/bin/local-settings && . ~/local/bin/local-settings || true
 # Load aliases
 test -s ~/.alias && . ~/.alias || true
 
+# Fix ls colors for solarized theme
 export LSCOLORS="ExGxBxDxCxEgEdxbxgxcxd"
+
+# Use colors for grep
 export GREP_OPTIONS="--color"
 
 # Add colors to less
@@ -26,12 +29,12 @@ export LESS="-R"
 export LESSOPEN="|lesspipe %s"
 export LESSCOLORIZER=pygmentize
 
-
 # Unbreak history
 export HISTSIZE=100000
 export HISTFILE="$HOME/.history"
 export SAVEHIST=$HISTSIZE
 setopt hist_ignore_all_dups
+
 # Use vi key bindings
 bindkey -v
 
@@ -48,17 +51,11 @@ zle -N zle-keymap-select
 setopt inc_append_history
 setopt share_history
 
-# Enable virtualenvwrapper
-export WORKON_HOME=$HOME/.virtualenvs
-export PROJECT_HOME=$HOME/Devel
-source /usr/bin/virtualenvwrapper.sh
-
 # Load ssh env
 source $HOME/.ssh/environment
 
 # Make pip work with virtualenvwrapper
 export PIP_DOWNLOAD_CACHE=$HOME/.pip/cache
-export PIP_VIRTUALENV_BASE=$WORKON_HOME
 export PIP_RESPECT_VIRTUALENV=true
 export PIP_REQUIRE_VIRTUALENV=true
 
@@ -106,6 +103,7 @@ work(){
     source env/bin/activate
 }
 
+# Create clean slate directory to test out ideas
 function new-scratch {
     cur_dir="$HOME/scratch"
     new_dir="$HOME/Tmp/scratch-`date +'%s'`"

@@ -287,4 +287,7 @@ let g:jsmode = 0
 
 let g:user_zen_leader_key = '<c-e>'
 
-let html_no_rendering=1
+let html_no_rendering = 1
+
+" Do not use virtualenv
+let g:pymode_virtualenv = 0
