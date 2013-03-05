@@ -4,10 +4,24 @@ servers = (
     chatnet = "freenode";
     port = "6667";
     autoconnect = "yes";
+  },
+
+  {
+      address = "irc.oftc.net";
+      chatnet = "oftc";
+      port = "6667";
+      autoconnect = "yes";
   }
 );
 
 chatnets = {
+  oftc = {
+    type = "IRC";
+    max_kicks = "4";
+    max_msgs = "3";
+    max_whois = "30";
+    autosendcmd = "";
+  };
   freenode = {
     type = "IRC";
     autosendcmd = "/msg nickserv identify abele {PASSWORD}";
@@ -16,7 +30,8 @@ chatnets = {
 
 channels = (
   { name = "#toscawidgets"; chatnet = "freenode"; autojoin = "yes"; },
-  { name = "#turbogears"; chatnet = "freenode"; autojoin = "yes"; }
+  { name = "#turbogears"; chatnet = "freenode"; autojoin = "yes"; },
+  { name = "#pythonlv"; chatnet = "oftc"; autojoin = "yes"; }
 );
 
 aliases = {
