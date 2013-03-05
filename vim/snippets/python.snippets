@@ -12,3 +12,15 @@ snippet npdb
 # Add TODO note
 snippet TODO
 	# TODO: ${1}
+# Create test case
+snippet t
+	def test_${1:description}(${2:`indent('.') ? 'self' : ''`}):
+		${3:raise NotImplementedError('Implement this test case!')}
+# Create class
+snippet c
+	class ${1:ClassName}(${2:object}):
+		${3:pass}
+# New Function
+snippet f
+	def ${1:fname}(${2:`indent('.') ? 'self' : ''`}):
+		${3:raise NotImplementedError('Method placeholder')}
