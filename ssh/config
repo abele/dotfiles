@@ -39,3 +39,7 @@ Host jds
 Host dasbmc
     HostName dasbmc
     User ubuntu
+
+Host kol
+    HostName kol
+    User kol
