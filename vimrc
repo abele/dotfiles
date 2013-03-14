@@ -104,9 +104,9 @@ map <leader>ga :CtrlP */tests/<CR>
 
 " Ignore verstion control artifacts
 let g:ctrlp_custom_ignore = {
-            \ 'dir': '\.git$\|\.hg$\|\.svn$\|\.egg$\|\.egg-info$\|env$\|\.tox$\|\.ropeproject$\|data$',
-            \ 'file': '\.exe$\|\.so$\|\.dll$\|\.pyc$\|\.png$\|\.jpg$\|\.tags$\|tags$',
-            \ 'link': 'SOME_BAD_SYMBOLIC_LINKS',
+            \ 'dir':  '\v[\/]\.(git|hg|svn|egg|egg-info|tox)$\|env$\|dist$\|data$',
+            \ 'file': '\v\.(exe|so|dll|pyc|png|jpg|tags)$\|tags',
+            \ 'link': 'some_bad_symbolic_links',
             \ }
 
 let g:ctrlp_root_markers = ['Guardfile']
