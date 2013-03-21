@@ -105,7 +105,7 @@ map <leader>ga :CtrlP */tests/<CR>
 " Ignore verstion control artifacts
 let g:ctrlp_custom_ignore = {
             \ 'dir':  '\v[\/]\.(git|hg|svn|egg|egg-info|tox)$|env$|dist$|data$',
-            \ 'file': '\v\.(exe|so|dll|pyc|png|jpg|tags)$|tags$',
+            \ 'file': '\v\.(exe|so|dll|pyc|png|jpg|tags|o)$|tags$',
             \ 'link': 'some_bad_symbolic_links',
             \ }
 
