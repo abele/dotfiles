@@ -289,5 +289,13 @@ let g:user_zen_leader_key = '<c-e>'
 
 let html_no_rendering = 1
 
-" Do not use virtualenv
-let g:pymode_virtualenv = 0
+function! ToggleVenv()
+    if g:pymode_virtualenv
+        let g:pymode_virtualenv = 0
+        echo "Python virtualenv disabled"
+    else
+        let g:pymode_virtualenv = 1
+        echo "Python virtualenv enabled"
+    endif
+endfunction
+command! Venv call ToggleVenv()
