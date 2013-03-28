@@ -13,6 +13,9 @@ Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-commentary'
 Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-eunuch'
+
+Bundle 'vim-scripts/matchit.zip'
+
 Bundle 'Lokaltog/vim-easymotion'
 Bundle 'mattn/zencoding-vim'
 Bundle 'altercation/vim-colors-solarized'
