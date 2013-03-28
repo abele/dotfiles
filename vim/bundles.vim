@@ -36,14 +36,10 @@ Bundle 'tpope/vim-cucumber'
 Bundle 'klen/python-mode'
 Bundle 'klen/vim-jsmode'
 
-Bundle 'sophacles/vim-bundle-mako'
-
 Bundle 'sjl/gundo.vim'
 Bundle 'mileszs/ack.vim'
 
 Bundle 'vim-scripts/nginx.vim'
-
-Bundle 'gerw/vim-HiLinkTrace'
 
 Bundle 'gerw/vim-HiLinkTrace'
 
