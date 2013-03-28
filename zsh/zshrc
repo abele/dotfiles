@@ -114,3 +114,8 @@ function new-scratch {
     cd $cur_dir
     echo "New scratch dir ready for grinding ;>"
 }
+
+# Setup distribute for Python 3
+function setup-distribute() {
+    curl -L http://python-distribute.org/distribute_setup.py | python
+}
