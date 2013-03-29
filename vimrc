@@ -299,3 +299,22 @@ function! ToggleVenv()
     endif
 endfunction
 command! Venv call ToggleVenv()
+
+" Search online documentation for word under cursor
+function! OnlineDoc()
+    echo &ft
+    if &ft =~ "python"
+        let s:urlTemplate = "\"http://docs.python.org/2/search.html?q=%&check_keywords=yes&area=default\""
+    endif
+    let s:browser = "chromium"
+    let s:wordUnderCursor = expand("<cword>")
+    let s:url = substitute(s:urlTemplate, "%", s:wordUnderCursor, "g")
+    let s:cmd = "!" . s:browser . " " . s:url
+    execute s:cmd
+endfunction
+" Online doc search.
+map ,od :call OnlineDoc()<CR>
+
+
+" Use pep8-indent plug-in
+let g:pymode_indent = 0
