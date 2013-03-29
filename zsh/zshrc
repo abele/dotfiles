@@ -119,3 +119,15 @@ function new-scratch {
 function setup-distribute() {
     curl -L http://python-distribute.org/distribute_setup.py | python
 }
+
+
+# Download Python packages localy and install in separate step
+PIP_PACKAGE_DIR=/home/abele/pip-packages/
+
+function pip_install {
+    pip install --no-index --find-links=file://$PIP_PACKAGE_DIR $*
+}
+
+function pip_download {
+    pip install --download=$PIP_PACKAGE_DIR --exists-action=i $*
+}
