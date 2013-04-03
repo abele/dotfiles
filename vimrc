@@ -157,6 +157,8 @@ autocmd FileType dosini set commentstring=#\ %s
 "for ruby, autoindent with two spaces, always expand tabs
 autocmd FileType ruby,haml,eruby,yaml,html,htmldjango,mako,javascript,sass,cucumber set ai sw=2 sts=2 et
 
+autocmd FileType gitcommit set spell
+
 " Call onmicomplete using ,,
 inoremap <leader>, <C-x><C-o>
 
