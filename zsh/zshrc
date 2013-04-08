@@ -131,3 +131,7 @@ function pip_install {
 function pip_download {
     pip install --download=$PIP_PACKAGE_DIR --exists-action=i $*
 }
+
+function dj {
+    python manage.py $*
+}
