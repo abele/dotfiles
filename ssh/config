@@ -43,3 +43,7 @@ Host dasbmc
 Host kol
     HostName kol
     User kol
+
+Host pydev
+    HostName dev.python.lv
+    User ubuntu
