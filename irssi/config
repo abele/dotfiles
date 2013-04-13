@@ -30,6 +30,7 @@ chatnets = {
 channels = (
   { name = "#toscawidgets"; chatnet = "freenode"; autojoin = "yes"; },
   { name = "#turbogears"; chatnet = "freenode"; autojoin = "yes"; },
+  { name = "#python"; chatnet = "freenode"; autojoin = "yes"; },
   { name = "#pythonlv"; chatnet = "oftc"; autojoin = "yes"; }
 );
 
