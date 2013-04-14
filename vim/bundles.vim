@@ -42,6 +42,8 @@ Bundle 'klen/vim-jsmode'
 Bundle 'sjl/gundo.vim'
 Bundle 'mileszs/ack.vim'
 
+Bundle 'alfredodeza/pytest.vim'
+
 Bundle 'vim-scripts/nginx.vim'
 
 Bundle 'gerw/vim-HiLinkTrace'
