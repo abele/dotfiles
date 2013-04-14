@@ -128,8 +128,8 @@
 
 !! }
 
-URxvt.font: xft:DejaVu Sans Mono:pixelsize=16
-URxvt.boldfont: xft:DejaVu Sans Mono:pixelsize=16:style=bold
+URxvt.font: xft:DejaVu Sans Mono:size=11
+URxvt.boldfont: xft:DejaVu Sans Mono:size=11:style=bold
 
 Xft.dpi:96
 Xft.hinting: 1
