@@ -18,9 +18,10 @@ Bundle 'vim-scripts/matchit.zip'
 
 Bundle 'Lokaltog/vim-easymotion'
 Bundle 'mattn/zencoding-vim'
-Bundle 'altercation/vim-colors-solarized'
 Bundle 'kien/ctrlp.vim'
 Bundle 'Lokaltog/vim-powerline'
+
+Bundle 'flazz/vim-colorschemes'
 
 " vim-snipmate and its dependencies
 Bundle 'MarcWeber/vim-addon-mw-utils'

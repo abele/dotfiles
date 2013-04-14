@@ -9,8 +9,10 @@ syntax enable
 " Add matcher style so it is not rewriten by color scheme
 autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
 
-colorscheme solarized
-let g:Powerline_colorscheme="solarized256"
+colorscheme xoria256
+
+" Highlight current line without underline
+hi CursorLine term=bold cterm=bold 
 
 set t_ti= t_te=
 
