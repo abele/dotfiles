@@ -16,39 +16,42 @@ Bundle 'tpope/vim-eunuch'
 
 Bundle 'vim-scripts/matchit.zip'
 
+" Navigation {{{
 Bundle 'Lokaltog/vim-easymotion'
-Bundle 'mattn/zencoding-vim'
 Bundle 'kien/ctrlp.vim'
+" }}}
+
+" Visuals {{{
 Bundle 'Lokaltog/vim-powerline'
-
 Bundle 'flazz/vim-colorschemes'
+" }}}
 
-" vim-snipmate and its dependencies
+" vim-snipmate and its dependencies {{{
 Bundle 'MarcWeber/vim-addon-mw-utils'
 Bundle 'tomtom/tlib_vim'
 Bundle 'honza/vim-snippets'
 Bundle 'garbas/vim-snipmate'
+" }}}
 
 Bundle 'vim-scripts/ZoomWin'
 Bundle 'majutsushi/tagbar'
 Bundle 'vim-scripts/YankRing.vim'
 Bundle 'vim-scripts/AutoTag'
 
-Bundle 'hynek/vim-python-pep8-indent'
-Bundle 'tpope/vim-cucumber'
-
-Bundle 'klen/python-mode'
+" Bundle 'klen/python-mode'
+" Programming {{{
+Bundle 'mattn/zencoding-vim'
 Bundle 'klen/vim-jsmode'
-
-Bundle 'sjl/gundo.vim'
+"
 Bundle 'mileszs/ack.vim'
 
+Bundle 'davidhalter/jedi-vim'
+Bundle 'hynek/vim-python-pep8-indent'
 Bundle 'alfredodeza/pytest.vim'
+Bundle 'tpope/vim-cucumber'
 
 Bundle 'vim-scripts/nginx.vim'
-
-Bundle 'gerw/vim-HiLinkTrace'
+" }}}
 
 filetype plugin indent on     " required!
 filetype plugin on
-
