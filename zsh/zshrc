@@ -98,7 +98,7 @@ stty stop ''
 # Load python virtualenv environment
 work(){
     ENV_NAME=$1
-    source ${ENV_NAME:-env}/bin/activate
+    source ${ENV_NAME:-venv}/bin/activate
 }
 
 # Create clean slate directory to test out ideas
