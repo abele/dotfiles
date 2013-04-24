@@ -38,8 +38,8 @@ Bundle 'majutsushi/tagbar'
 Bundle 'vim-scripts/YankRing.vim'
 Bundle 'vim-scripts/AutoTag'
 
-" Bundle 'klen/python-mode'
 " Programming {{{
+Bundle 'klen/python-mode'
 Bundle 'mattn/zencoding-vim'
 Bundle 'klen/vim-jsmode'
 "

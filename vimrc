@@ -177,6 +177,29 @@ augroup python_configs
     "     http://www.python.org/dev/peps/pep-0008/ )
     autocmd FileType python setlocal softtabstop=4 tabstop=4 shiftwidth=4 expandtab
 
+    let g:pymode_doc = 0
+    let g:pymode_run = 0
+
+    let g:pymode_lint = 1
+    let g:pymode_lint_ignore = ""
+    let g:pymode_lint_cwindow = 0
+
+    let g:pymode_folding = 0
+    let g:pymode_paths = ['./env', './venv']
+
+    " Key for set/unset breakpoint
+    let g:pymode_breakpoint_key = '<leader>sb'
+
+    " Load rope plugin
+    let g:pymode_rope = 1
+    " Auto create and open ropeproject
+    let g:pymode_rope_vim_completion = 0
+    let g:pymode_rope_auto_project = 1
+    let g:pymode_rope_autoimport_modules = ["os", "shutil", "datetime"]
+
+    " Auto fix vim python paths if virtualenv enabled
+    let g:pymode_virtualenv = 1
+
     " Use pep8-indent plug-in
     let g:pymode_indent = 0
 
@@ -191,7 +214,8 @@ augroup END
 " ========== Backup ================ {{{1
 
 " do not keep a backup file, use versions instead
-set nobackup      
+set nobackup
+set noswapfile
 
 " ========== MISC ================ {{{1
 " Persist folds
