@@ -53,5 +53,7 @@ Bundle 'tpope/vim-cucumber'
 Bundle 'vim-scripts/nginx.vim'
 " }}}
 
+Bundle 'airblade/vim-gitgutter'
+
 filetype plugin indent on     " required!
 filetype plugin on
