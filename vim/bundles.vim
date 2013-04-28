@@ -50,6 +50,7 @@ Bundle 'hynek/vim-python-pep8-indent'
 Bundle 'alfredodeza/pytest.vim'
 Bundle 'tpope/vim-cucumber'
 
+Bundle 'saltstack/salt-vim'
 Bundle 'vim-scripts/nginx.vim'
 " }}}
 
