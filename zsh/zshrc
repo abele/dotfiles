@@ -126,3 +126,8 @@ function pip_download {
 function dj {
     python manage.py $*
 }
+
+# Change working directory to project base
+cpb () {
+    cd `project-root-path`
+}
