@@ -178,6 +178,8 @@ augroup python_configs
     "     http://www.python.org/dev/peps/pep-0008/ )
     autocmd FileType python setlocal softtabstop=4 tabstop=4 shiftwidth=4 expandtab
 
+    autocmd FileType python set commentstring=#\ %s
+
     let g:pymode_doc = 0
     let g:pymode_run = 0
 
