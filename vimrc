@@ -158,6 +158,7 @@ autocmd FileType ruby,haml,eruby,yaml,html,htmldjango,mako,javascript,sass,cucum
 
 " Use spell-check for commit messages
 autocmd FileType gitcommit set spell
+autocmd FileType rst set spell
 
 " Show long lists in omni completion
 set completeopt=menuone,menu,longest
