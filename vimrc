@@ -249,3 +249,6 @@ endfunction
 
 " Online doc search.
 map ,od :call OnlineDoc()<CR>
+
+" Disable JS mode
+let g:jsmode = 0
