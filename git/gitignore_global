@@ -2,5 +2,6 @@ tags
 .ropeproject/
 .tags
 .galop
+.env
 env/
 venv/

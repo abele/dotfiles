@@ -131,3 +131,4 @@ function dj {
 cpb () {
     cd `project-root-path`
 }
+source ~/.autoenv/activate.sh
