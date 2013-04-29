@@ -6,7 +6,3 @@ alias l="ls"
 alias ls='ls -G --color'
 alias ll='ls -lG --color'
 alias duh='du -csh'
-
-# Keyboards
-alias lvkb="setxkbmap lv apostrophe && xmodmap ~/.Xmodmap"
-alias uskb="setxkbmap us && xmodmap ~/.Xmodmap"

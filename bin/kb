@@ -1,0 +1,15 @@
+#!/usr/bin/env sh
+# Change keyborad layout. Uses 'Lv apostrophe' by default.
+# Example usage:
+#     $kb us
+
+set -e
+
+LAYOUT=$1
+
+main() {
+    setxkbmap ${LAYOUT:-lv apostrophe}
+    xmodmap ~/.Xmodmap
+}
+
+main
