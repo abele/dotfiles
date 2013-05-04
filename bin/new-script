@@ -12,7 +12,21 @@ script_name=$1
 main() {
     enforce_usage
 
-    echo -e "#!/bin/bash\n\n" > "$script_name"
+    cat > "$script_name" <<EOL
+#!/usr/bin/env bash
+# Simple script description.
+#
+# Example usage:
+#   $ script_name
+
+set -e
+
+main() {
+
+}
+
+main
+EOL
     chmod a+x "$script_name"
     $EDITOR + "$script_name"
 }
