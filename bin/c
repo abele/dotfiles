@@ -1,0 +1,34 @@
+#!/usr/bin/env bash
+#
+# Starts Chromium with different profiles
+#
+# Example usage:
+#   $ c [-i] [d]
+
+set -e
+
+while getopts ":i" opt; do
+    case $opt in
+        i)
+            incognito="--incognito"
+            ;;
+        \?)
+            echo "Invalid option: -$OPTARG" >&2
+            exit 1
+            ;;
+        :)
+            echo "Option -$OPTARG requires an argument." >&2
+            exit 1
+            ;;
+    esac
+done
+
+shift $((OPTIND-1))
+profile_name=${@:-Default}
+
+main() {
+    chromium --profile-directory="${profile_name}" $incognito
+}
+
+
+main
