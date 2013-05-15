@@ -2,11 +2,13 @@
 " Load bundle configurations
 source ~/.vim/bundles.vim
 
-" ======= Colorscheme ====== {{{1
+" Very long history
+set history=10000
+" ======= Color scheme ====== {{{1
 set background=dark
 syntax enable
 
-" Add matcher style so it is not rewriten by color scheme
+" Add matcher style so it is not rewritten by color scheme
 autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
 
 colorscheme xoria256
@@ -44,7 +46,7 @@ set cursorline
 set showcmd
 set cmdheight=2
 
-" Allways show statusline
+" Allways show status line
 set laststatus=2
 
 " Show mode what you're in
@@ -98,7 +100,7 @@ map <leader>f :CtrlP<CR>
 map <leader>b :CtrlPBuffer<CR>
 map <leader>t :CtrlPTag<CR>
 
-" Ignore verstion control artifacts
+" Ignore version control artifacts
 let g:ctrlp_custom_ignore = {
             \ 'dir':  '\v[\/]\.(git|hg|svn|egg|egg-info|tox)$|env$|dist$|data$',
             \ 'file': '\v\.(exe|so|dll|pyc|png|jpg|tags|o)$|tags$',
@@ -172,7 +174,7 @@ autocmd BufNewFile,BufRead *.json set filetype=javascript
 augroup python_configs
     " Remove ALL autocommands of the current group.
     autocmd!
-    " Add  to new filetypes
+    " Add  to new file types
     autocmd FileType python set textwidth=79 colorcolumn=+1
     " make Python follow PEP8 for whitespace (
     "     http://www.python.org/dev/peps/pep-0008/ )
@@ -193,7 +195,7 @@ augroup python_configs
     " Key for set/unset breakpoint
     let g:pymode_breakpoint_key = '<leader>sb'
 
-    " Load rope plugin
+    " Load rope plug-in
     let g:pymode_rope = 1
     " Auto create and open ropeproject
     let g:pymode_rope_vim_completion = 0
@@ -224,6 +226,9 @@ set noswapfile
 " Persist folds
 autocmd BufWinLeave * silent! mkview
 autocmd BufWinEnter * silent! loadview
+
+" Highlight bad whitespace
+autocmd BufRead,BufNewFile,BufWinLeave,BufWinEnter * match ExtraWhitespace /\s\+$\| \+\ze\t/
 
 " Mark text width
 set textwidth=79
