@@ -22,6 +22,7 @@ Bundle 'kien/ctrlp.vim'
 " }}}
 
 " Visuals {{{
+Bundle 'bronson/vim-trailing-whitespace'
 Bundle 'Lokaltog/vim-powerline'
 Bundle 'flazz/vim-colorschemes'
 " }}}
@@ -42,8 +43,9 @@ Bundle 'vim-scripts/AutoTag'
 Bundle 'klen/python-mode'
 Bundle 'mattn/zencoding-vim'
 Bundle 'klen/vim-jsmode'
-"
+
 Bundle 'mileszs/ack.vim'
+
 
 Bundle 'davidhalter/jedi-vim'
 Bundle 'hynek/vim-python-pep8-indent'
