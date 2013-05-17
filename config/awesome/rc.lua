@@ -58,8 +58,6 @@ layouts =
     awful.layout.suit.tile.top,
     awful.layout.suit.fair,
     awful.layout.suit.fair.horizontal,
-    awful.layout.suit.spiral,
-    awful.layout.suit.spiral.dwindle,
     awful.layout.suit.max,
     awful.layout.suit.max.fullscreen,
     awful.layout.suit.magnifier
@@ -262,10 +260,7 @@ globalkeys = awful.util.table.join(
     -- Run or raise applications with dmenu
     --
     awful.key({ modkey },            "p",     function ()
-        awful.util.spawn("dmenu_run -i -p 'Run command:' -nb '" ..
-        beautiful.bg_normal .. "' -nf '" .. beautiful.fg_normal ..
-        "' -sb '" .. beautiful.bg_focus ..
-        "' -sf '" .. beautiful.fg_focus .. "'")
+        awful.util.spawn("bashrun2")
     end)
 )
 
@@ -347,6 +342,17 @@ awful.rules.rules = {
       properties = { floating = true } },
     { rule = { class = "pinentry" },
       properties = { floating = true } },
+
+      { rule = { class = "URxvt", instance = "bashrun2-run-dialog" },
+      properties = { floating = true,
+                     skip_taskbar = true,
+                     border_width = 0,
+                     above = true },
+      callback = function (c)
+          awful.placement.centered(c,nil)
+      end
+  },
+
     { rule = { class = "gimp" },
       properties = { floating = true } },
     -- Set Firefox to always map on tags number 2 of screen 1.
