@@ -42,7 +42,7 @@ Host dasbmc
 
 Host kol
     HostName kol
-    User kol
+    User lightsoft
 
 Host pydev
     HostName dev.python.lv
