@@ -110,10 +110,11 @@ function new-scratch {
 }
 
 # Setup distribute for Python 3
-function setup-distribute() {
+setup-pip() {
     curl -L http://python-distribute.org/distribute_setup.py | python
+    rm distribute*.tar.gz
+    curl -L https://raw.github.com/pypa/pip/master/contrib/get-pip.py | python
 }
-
 
 # Download Python packages localy and install in separate step
 PIP_PACKAGE_DIR=/home/abele/pip-packages/
