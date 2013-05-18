@@ -261,6 +261,10 @@ globalkeys = awful.util.table.join(
     --
     awful.key({ modkey },            "p",     function ()
         awful.util.spawn("bashrun2")
+    end),
+    -- Lock screen
+    awful.key({ modkey, "Shift" }, "/", function ()
+        awful.util.spawn("log-slock")
     end)
 )
 
