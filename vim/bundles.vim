@@ -58,6 +58,7 @@ Bundle 'jgb/django.vim'
 " }}}
 
 Bundle 'airblade/vim-gitgutter'
+Bundle 'vim-scripts/lua.vim--Ko'
 
 filetype plugin indent on     " required!
 filetype plugin on
