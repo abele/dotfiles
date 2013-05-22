@@ -10,3 +10,5 @@ alias duh='du -csh'
 # Run incognito
 alias inc='c -i'
 alias gmail='c -u gmail.com'
+
+alias cpb='cd `project-root-path`'

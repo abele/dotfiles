@@ -7,7 +7,7 @@ autoload -U compinit
 compinit
 
 # Backslash not allways works as expected
-bindkey '^R' history-incremental-search-backward
+# bindkey '^R' history-incremental-search-backward
 
 # Add paths that should have been there by default
 export PATH=/sbin:/usr/local/sbin:/usr/local/bin:~/lib/bin:${PATH}
@@ -72,14 +72,6 @@ function precmd () {
     _z --add "$(pwd -P)"
 }
 
-# Start simple HTTP server in current directory.
-function serve-http(){
-    port_number=${1:-8080}
-    python -m SimpleHTTPServer "$port_number"
-}
-
-mcd () { mkdir -p "$@" && cd "$@"; }
-
 # Batch rename files
 autoload -U zmv
 alias mmv='noglob zmv -W'
@@ -94,7 +86,7 @@ source ~/.zsh/plugins/syntax-highlighting/zsh-syntax-highlighting.zsh
 stty stop ''
 
 # Load python virtualenv environment
-work(){
+function work(){
     ENV_NAME=$1
     source ${ENV_NAME:-venv}/bin/activate
 }
@@ -110,29 +102,10 @@ function new-scratch {
 }
 
 # Setup distribute for Python 3
-setup-pip() {
+function setup-pip() {
     curl -L http://python-distribute.org/distribute_setup.py | python
     rm distribute*.tar.gz
     curl -L https://raw.github.com/pypa/pip/master/contrib/get-pip.py | python
 }
 
-# Download Python packages localy and install in separate step
-PIP_PACKAGE_DIR=/home/abele/pip-packages/
-
-function pip_install {
-    pip install --no-index --find-links=file://$PIP_PACKAGE_DIR $*
-}
-
-function pip_download {
-    pip install --download=$PIP_PACKAGE_DIR --exists-action=i $*
-}
-
-function dj {
-    python manage.py $*
-}
-
-# Change working directory to project base
-cpb () {
-    cd `project-root-path`
-}
 source ~/.autoenv/activate.sh
