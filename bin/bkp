@@ -1,5 +1,6 @@
 #!/bin/bash
 # Create backup for file. Adds bkp extension to file.
+#
 # Example usage:
 #   $ bkp file_to_backup
 
@@ -25,7 +26,7 @@ usage() {
 
 
 backup_file() {
-    cp "$FILE" "$FILE.bkp"
+    cp "${FILE}" "${FILE}.bkp"
 }
 
 main

@@ -3,14 +3,17 @@
 # Starts Chromium with different profiles
 #
 # Example usage:
-#   $ c [-i] [d]
+#   $ c [-i] -u gmail.com [Dev]
 
 set -e
 
-while getopts ":i" opt; do
+while getopts ":iu:" opt; do
     case $opt in
         i)
             incognito="--incognito"
+            ;;
+        u)
+            url="${OPTARG}"
             ;;
         \?)
             echo "Invalid option: -$OPTARG" >&2
@@ -27,7 +30,7 @@ shift $((OPTIND-1))
 profile_name=${@:-Default}
 
 main() {
-    chromium --profile-directory="${profile_name}" $incognito
+    chromium --profile-directory="${profile_name}" ${incognito} "${url}"
 }
 
 

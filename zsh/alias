@@ -6,3 +6,7 @@ alias l="ls"
 alias ls='ls -G --color'
 alias ll='ls -lG --color'
 alias duh='du -csh'
+
+# Run incognito
+alias inc='c -i'
+alias gmail='c -u gmail.com'

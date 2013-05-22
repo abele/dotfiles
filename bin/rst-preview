@@ -1,6 +1,0 @@
-#!/bin/bash
-
-TMP_FILE="/tmp/$1.html"
-
-rst2html.py "$1">$TMP_FILE
-xdg-open $TMP_FILE
