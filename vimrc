@@ -68,6 +68,9 @@ set showtabline=2
 " Window width
 set winwidth=79
 
+
+map ,dj :set filetype=htmldjango<CR>
+
 " ==========  Search ========= {{{1
 
 set hlsearch
