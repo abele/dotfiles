@@ -210,6 +210,26 @@
       # replaced with "foo", and the resulting url will be passed to the
       # browse action, which finally launches "$BROWSER <url>"
 
+    +handler define
+      --match '^def:(.+)'
+      --command  'www.google.com/search?q=define %1'
+      --action browse
+
+    +handler python-documentation
+      --match '^pydoc:(.+)'
+      --command 'docs.python.org/2/search.html?q=%1&check_keywords=yes&area=default'
+      --action browse
+
+    +handler stack-overflow
+      --match '^so:(.+)'
+      --command 'stackoverflow.com/search?q=%1'
+      --action browse
+
+    +handler markmail
+      --match '^mm:(.+)'
+      --command 'markmail.org/search/?q=%1'
+      --action browse
+
     +handler google-lucky
       --match '^ggl:(.+)'
       --command  'www.google.com/search?q=%1&btnI=I\%27m+Feeling+Lucky'
@@ -285,7 +305,7 @@
     # Alternatively use the completion of the "browse" handler
     # defined above.
 
-    +bookmark bashrun2.googlecode.com
+    +bookmark tomato.es
     +bookmark archlinux.org
 }
 
