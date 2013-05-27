@@ -8,6 +8,12 @@ def install_vim_bundles():
 
 
 @task
+def ack():
+    home = '~'
+    run('ln -s `pwd`/ack/ackrc {home}/.ackrc'.format(home=home))
+
+
+@task
 def pip():
     cp('pip/pip.cfg', '~/.pip')
 
