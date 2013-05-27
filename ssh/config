@@ -32,12 +32,16 @@ Host vbox
     HostName vbox
     User bob
 
+Host vtest
+    HostName vtest
+    User ubuntu
+
 Host jds
     HostName jds
     User jd
 
-Host dasbmc
-    HostName dasbmc
+Host bmcdss
+    HostName bmcdss
     User ubuntu
 
 Host kol
