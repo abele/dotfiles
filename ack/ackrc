@@ -1,2 +1,4 @@
 --type-set
 salt=.sls
+--ignore-dir=env
+--ignore-dir=venv
