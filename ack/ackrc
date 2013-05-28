@@ -2,3 +2,4 @@
 salt=.sls
 --ignore-dir=env
 --ignore-dir=venv
+--ignore-dir=dist
