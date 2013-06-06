@@ -8,6 +8,11 @@ def install_vim_bundles():
 
 
 @task
+def autoenv():
+    run('git clone git://github.com/kennethreitz/autoenv.git ~/.autoenv')
+
+
+@task
 def ack():
     home = '~'
     run('ln -s `pwd`/ack/ackrc {home}/.ackrc'.format(home=home))
