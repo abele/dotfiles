@@ -34,9 +34,9 @@
     head = !git l -1
 
     h = !git head
-    hp = "!source ~/.githelpers && show_git_head"
+    hp = "!bash -c 'source ~/.githelpers && show_git_head'"
 
-    l = "!source ~/.githelpers && pretty_git_log"
+    l = "!bash -c 'source ~/.githelpers && pretty_git_log'"
     la = !git l --all
 
     r = !git l -30
