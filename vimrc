@@ -14,7 +14,7 @@ autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
 colorscheme xoria256
 
 " Highlight current line without underline
-hi CursorLine term=bold cterm=bold 
+hi CursorLine term=bold cterm=bold
 
 set t_ti= t_te=
 
