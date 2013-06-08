@@ -8,5 +8,5 @@ set -e
 
 VENV=venv
 
-virtualenv --distribute -p python2.7 $VENV
+./bin/bootstrap-env.py $VENV
 $VENV/bin/pip install invoke
