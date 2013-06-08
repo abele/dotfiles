@@ -3,6 +3,19 @@ from invoke import task, run
 
 
 @task
+def all():
+    autoenv()
+
+    install_vundle()
+    install_vim_bundles()
+
+
+@task
+def install_vundle():
+    run('git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle')
+
+
+@task
 def install_vim_bundles():
     run('vim -u vim/bundles.vim +BundleInstall +q -c ":q"')
 
