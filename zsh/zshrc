@@ -53,10 +53,7 @@ setopt inc_append_history
 setopt share_history
 
 # Load ssh env
-source $HOME/.ssh/environment
-
-# Load ssh env
-source $HOME/.ssh/environment
+[[ -a "$HOME/.ssh/environment" ]] && source "$HOME/.ssh/environment"
 
 # Use vim as default editor
 export EDITOR=`which vim`
