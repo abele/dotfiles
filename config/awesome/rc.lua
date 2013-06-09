@@ -7,6 +7,8 @@ require("beautiful")
 -- Notification library
 require("naughty")
 
+require("battery")
+
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
 -- another config (This code will only ever execute for the fallback config)
@@ -173,8 +175,8 @@ for s = 1, screen.count() do
         },
         mylayoutbox[s],
         mytextclock,
-        volume_widget,
         s == 1 and mysystray or nil,
+        mybattmon,
         mytasklist[s],
         layout = awful.widget.layout.horizontal.rightleft
     }
