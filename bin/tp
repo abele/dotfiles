@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+# Enable/disable touchpad. By default turns touchpad on.
+# Device ID can be set by TOUCHPAD_ID environment variable.
+# Use `xinput list` to see your input devices.
+#
+# Example usage:
+#   $ tp [off]
+
+set -e
+
+TOUCHPAD_ID=${TOUCHPAD_ID:-10}
+
+STATE=1
+
+if [[ $1 == "off" ]]; then
+    STATE=0
+fi
+
+main() {
+    xinput set-prop $TOUCHPAD_ID "Device Enabled" $STATE
+}
+
+main
