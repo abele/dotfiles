@@ -12,11 +12,11 @@ xmodmap ~/.Xmodmap
 # Load terminal settings (colors etc)
 xrdb -merge $HOME/.Xresources
 
-# Load custom settings
-source ~/local/bin/custom-xinitrc-settings
-
 # Start ssh-agent
 ssh-agent-init
+
+# Load custom settings
+source ~/local/bin/custom-xinitrc-settings
 
 # Run window manager
 exec awesome
