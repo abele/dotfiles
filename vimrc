@@ -274,9 +274,9 @@ function! OpenLines(nrlines, dir)
   let start = line('.') + a:dir
   call append(start, repeat([''], nrlines))
   if a:dir < 0
-    normal! 2k
+    normal! 3k
   else
-    normal! 2j
+    normal! 3j
   endif
 endfunction
 " Mappings to open multiple lines and enter insert mode.
