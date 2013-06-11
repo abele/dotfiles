@@ -107,3 +107,5 @@ source ~/.autoenv/activate.sh
 
 # Enable syntax highlighting
 .  /usr/share/zsh/site-contrib/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+# Enable git-flow completion
+. /etc/zsh/git-flow-completion.zsh
