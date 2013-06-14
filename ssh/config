@@ -51,3 +51,8 @@ Host kol
 Host pydev
     HostName dev.python.lv
     User ubuntu
+
+Host stampy
+    HostName stampy
+    User ubuntu
+    IdentityFile ~/.ssh/stampy_id.pem
