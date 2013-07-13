@@ -4,7 +4,7 @@ import sys
 import subprocess
 
 VENV_VERSION = '1.9.1'
-PYPI_VENV_BASE = 'http://pypi.python.org/packages/source/v/virtualenv'
+PYPI_VENV_BASE = 'https://pypi.python.org/packages/source/v/virtualenv/'
 
 
 def shellcmd(cmd, echo=True):
@@ -26,7 +26,7 @@ def main(initial_env='venv', python='python2'):
 
     # Fetch virtualenv from PyPI
     venv_url = PYPI_VENV_BASE + '/' + tgz_file
-    shellcmd('curl -O {0}'.format(venv_url))
+    shellcmd('wget {0}'.format(venv_url))
 
     # Untar
     shellcmd('tar xzf {0}'.format(tgz_file))
