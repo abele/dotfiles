@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+#
+# List project files by change count.
+#
+# Example usage:
+#     $ git-files-by-change
+
+
+set -e
+
+git log --pretty=format: --name-only | grep -v '^$' | sort | uniq -c | sort -rg
