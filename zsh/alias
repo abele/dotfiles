@@ -12,3 +12,6 @@ alias inc='c -i'
 alias gmail='c -u gmail.com'
 
 alias cpb='cd `project-root-path`'
+
+# Add current directory as bin
+alias acab='export PATH="$PATH:`pwd`"'
