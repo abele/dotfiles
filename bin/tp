@@ -8,7 +8,7 @@
 
 set -e
 
-TOUCHPAD_ID=${TOUCHPAD_ID:-10}
+TOUCHPAD_ID=`xinput --list | grep TouchPad | pyp "p.split('=')[1].split()[0]"`
 
 STATE=1
 
