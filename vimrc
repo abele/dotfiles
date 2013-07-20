@@ -163,6 +163,9 @@ autocmd FileType ruby,haml,eruby,yaml,html,htmldjango,mako,javascript,sass,cucum
 
 " Use spell-check for commit messages
 autocmd FileType gitcommit set spell
+" Got to first line in git commit messages
+autocmd FileType gitcommit call setpos('.', [0, 1, 1, 0])
+" Enable spell-check in restructured text files
 autocmd FileType rst set spell
 
 " Show long lists in omni completion
@@ -282,3 +285,33 @@ endfunction
 " Mappings to open multiple lines and enter insert mode.
 nnoremap <Leader>o :<C-u>call OpenLines(v:count, 0)<CR>S
 nnoremap <Leader>O :<C-u>call OpenLines(v:count, -1)<CR>S
+
+
+" Ack python files for WORD under cursor
+function! AckWordUnderCursor(wordType)
+    echo &ft
+    let s:wordUnderCursor = expand(a:wordType)
+    let s:cmd = ":Ack '" . s:wordUnderCursor . "'"
+    execute s:cmd
+endfunction
+
+" Online doc search.
+map ,w :call AckWordUnderCursor("<cword>")<CR>
+map ,W :call AckWordUnderCursor("<cWORD>")<CR>
+
+" Search PyPi index for word under cursor
+function! PyPi()
+    echo &ft
+    let s:urlTemplate = "\"https://pypi.python.org/pypi?\\%3Aaction=search&term=#&submit=search\""
+    let s:browser = "chromium"
+    let s:wordUnderCursor = expand("<cword>")
+    let s:url = substitute(s:urlTemplate, "#", s:wordUnderCursor, "g")
+    let s:cmd = "!" . s:browser . " " . s:url
+    execute s:cmd
+endfunction
+
+" Online doc search.
+map ,ai :call PyPi()<CR>
+
+" Allow saving of files as sudo when I forgot to start vim using sudo.
+cmap w!! w !sudo tee > /dev/null %
