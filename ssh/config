@@ -52,7 +52,23 @@ Host pydev
     HostName dev.python.lv
     User ubuntu
 
-Host stampy
-    HostName stampy
+Host stampy.sellfy
+    HostName stampy.sellfy
     User ubuntu
     IdentityFile ~/.ssh/stampy_id.pem
+
+Host stage.sellfy
+    HostName stage.sellfy
+    User root
+
+Host prod.sellfy
+    HostName prod.sellfy
+    User root
+
+Host old.sellfy
+    HostName old.sellfy
+    User root
+
+Host cabin
+    HostName cabin
+    User root
