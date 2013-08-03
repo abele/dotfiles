@@ -111,3 +111,18 @@ source ~/.autoenv/activate.sh
 . /etc/zsh/git-flow-completion.zsh
 
 export BROWSER="chromium"
+
+function vi-search-fix() {
+    zle vi-cmd-mode
+    zle .vi-history-search-backward
+}
+
+autoload vi-search-fix
+zle -N vi-search-fix
+bindkey -M viins '\e/' vi-search-fix
+
+bindkey "^?" backward-delete-char
+
+bindkey "^W" backward-kill-word
+bindkey "^H" backward-delete-chari  # Control-h also deletes the previous char
+bindkey "^U" kill-line
