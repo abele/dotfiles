@@ -126,3 +126,5 @@ bindkey "^?" backward-delete-char
 bindkey "^W" backward-kill-word
 bindkey "^H" backward-delete-chari  # Control-h also deletes the previous char
 bindkey "^U" kill-line
+
+export PYTHONSTARTUP="/home/abele/.config/python_startup.py"

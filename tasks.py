@@ -24,6 +24,9 @@ def install_vim_bundles():
 def autoenv():
     run('git clone git://github.com/kennethreitz/autoenv.git ~/.autoenv')
 
+@task
+def python():
+    cp('python/python_startup.py',  '~/.config/python_startup.py')
 
 @task
 def ack():
