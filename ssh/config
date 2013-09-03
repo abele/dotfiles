@@ -57,16 +57,16 @@ Host stampy.sellfy
     User ubuntu
     IdentityFile ~/.ssh/stampy_id.pem
 
-Host stage.sellfy
-    HostName stage.sellfy
+Host stage
+    HostName stage
     User root
 
-Host prod.sellfy
-    HostName prod.sellfy
+Host patty
+    HostName patty
     User root
 
-Host old.sellfy
-    HostName old.sellfy
+Host selma
+    HostName selma
     User root
 
 Host cabin
