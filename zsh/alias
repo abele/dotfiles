@@ -15,3 +15,11 @@ alias cpb='cd `project-root-path`'
 
 # Add current directory as bin
 alias acab='export PATH="$PATH:`pwd`"'
+
+alias o='xdg-open'
+
+# Git
+alias d='git checkout develop'
+alias m='git checkout master'
+alias gp='git pull'
+alias chat='tmux attach-session -t chat || tmux new-session -s chat -n irssi irssi \; attach'
