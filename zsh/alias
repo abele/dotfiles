@@ -23,9 +23,12 @@ alias d='git checkout develop'
 alias m='git checkout master'
 alias gp='git pull'
 alias ss='git ss'
+alias ga='git add'
+alias gd='git diff'
 
 alias chat='tmux attach-session -t chat || tmux new-session -s chat -n irssi irssi \; attach'
 alias resume='tmux attach-session -t'
 alias be='bootstrap-env.py && work'
 
 
+alias scratch='tmux attach-session -t scratch || tmux new-session -s scratch -n "cd ~/scratch" \; attach'
