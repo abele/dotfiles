@@ -31,4 +31,4 @@ alias resume='tmux attach-session -t'
 alias be='bootstrap-env.py && work'
 
 
-alias scratch='tmux attach-session -t scratch || tmux new-session -s scratch -n "cd ~/scratch" \; attach'
+alias scratch='tmux attach-session -t scratch || tmux new-session -s scratch -n "SCRATCH" "cd $HOME/scratch/; zsh" \; attach'
