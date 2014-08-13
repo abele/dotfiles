@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+# Move file or directory to compost with relative current relative path.
+#
+# Example usage:
+#   $ compost file
+
+set -e
+
+FILENAME=$1
+COMPOST_DIR="$HOME/compost"
+
+main() {
+    raw_base_dir=`dirname $FILENAME`
+    base_dir=`realpath --relative-to=$HOME $raw_base_dir`
+
+    mkdir -p -v $COMPOST_DIR/$base_dir
+    mv -v $FILENAME $COMPOST_DIR/$base_dir
+}
+
+main
