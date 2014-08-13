@@ -3,3 +3,6 @@ salt=.sls
 --ignore-dir=env
 --ignore-dir=venv
 --ignore-dir=dist
+--ignore-dir=.ropeproject
+--ignore-dir=reports
+--ignore-file=is:tags
