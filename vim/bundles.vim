@@ -13,6 +13,7 @@ Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-commentary'
 Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-eunuch'
+Bundle 'tpope/vim-unimpaired'
 
 Bundle 'vim-scripts/matchit.zip'
 
@@ -23,7 +24,7 @@ Bundle 'kien/ctrlp.vim'
 
 " Visuals {{{
 Bundle 'bronson/vim-trailing-whitespace'
-Bundle 'Lokaltog/vim-powerline'
+Bundle 'Lokaltog/powerline'
 Bundle 'flazz/vim-colorschemes'
 " }}}
 
@@ -41,7 +42,7 @@ Bundle 'vim-scripts/AutoTag'
 
 " Programming {{{
 Bundle 'klen/python-mode'
-Bundle 'mattn/zencoding-vim'
+Bundle 'mattn/emmet-vim'
 Bundle 'klen/vim-jsmode'
 
 Bundle 'mileszs/ack.vim'
@@ -56,6 +57,8 @@ Bundle 'saltstack/salt-vim'
 Bundle 'vim-scripts/nginx.vim'
 Bundle 'jgb/django.vim'
 " }}}
+"
+Bundle 'editorconfig/editorconfig-vim'
 
 Bundle 'airblade/vim-gitgutter'
 Bundle 'vim-scripts/lua.vim--Ko'
