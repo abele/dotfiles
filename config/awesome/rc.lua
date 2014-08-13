@@ -259,6 +259,9 @@ globalkeys = awful.util.table.join(
     awful.key({ }, "XF86AudioMute", function ()
         awful.util.spawn("amixer sset Master toggle") end),
 
+    -- Screenshots
+    awful.key({ }, "Print", function ()
+        awful.util.spawn("scrot -e 'mv $f ~/screenshots/ 2>/dev/null'") end),
     -- Run or raise applications with dmenu
     --
     awful.key({ modkey },            "p",     function ()
