@@ -61,12 +61,16 @@ Host stage
     HostName stage
     User root
 
+Host ling
+    HostName ling
+    User root
+
 Host patty
     HostName patty
     User root
 
-Host selma
-    HostName selma
+Host maude
+    HostName maude
     User root
 
 Host ned
@@ -89,6 +93,11 @@ Host statistics
     HostName statistics
     User root
 
+Host nelson
+    HostName nelson
+    User nelson
+    port 2048
+
 Host cabin
     HostName cabin
     User root
@@ -100,3 +109,14 @@ Host strops
 Host sils
     HostName sils
     User root
+
+Host vagrant
+  HostName 127.0.0.1
+  User vagrant
+  Port 2222
+  UserKnownHostsFile /dev/null
+  StrictHostKeyChecking no
+  PasswordAuthentication no
+  IdentityFile /home/abele/.vagrant.d/insecure_private_key
+  IdentitiesOnly yes
+  LogLevel FATAL
