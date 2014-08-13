@@ -24,7 +24,9 @@ alias m='git checkout master'
 alias gp='git pull'
 alias ss='git ss'
 alias ga='git add'
-alias gd='git diff'
+alias gd='git diff develop'
+alias gm='git diff master'
+alias co='git checkout -'
 
 alias chat='tmux attach-session -t chat || tmux new-session -s chat -n irssi irssi \; attach'
 alias resume='tmux attach-session -t'
@@ -32,3 +34,9 @@ alias be='bootstrap-env.py && work'
 
 
 alias scratch='tmux attach-session -t scratch || tmux new-session -s scratch -n "SCRATCH" "cd $HOME/scratch/; zsh" \; attach'
+alias myip='dig +short myip.opendns.com @resolver1.opendns.com'
+
+alias hvenv='work ~/hvenv'
+alias mvim='vim -u ~/.essential.vim'
+alias ns='new-scratch'
+alias in='ipython notebook'
