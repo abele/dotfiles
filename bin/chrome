@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+# Simple script description.
+#
+# Example usage:
+#   $ script_name
+
+set -e
+
+main() {
+    /usr/bin/google-chrome-unstable $*
+}
+
+main $*
