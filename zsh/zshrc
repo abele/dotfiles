@@ -80,10 +80,12 @@ export MAN_POSIXLY_CORRECT=1
 # Do not freeze terminal on Ctrl+s
 stty stop ''
 
-
 # Use antigen for ZSH plugin loading
 source $HOME/.zsh/func/antigen.zsh
+# Syntax highlighting bundle.
 antigen bundle zsh-users/zsh-syntax-highlighting
+# Automaticly load .env files
+antigen bundle sharat87/autoenv
 
 # Load python virtualenv environment
 function work(){
@@ -100,15 +102,6 @@ function new-scratch {
     cd $cur_dir
     echo "New scratch dir ready for grinding ;>"
 }
-
-# Setup distribute for Python 3
-function setup-pip() {
-    curl -L http://python-distribute.org/distribute_setup.py | python
-    rm distribute*.tar.gz
-    curl -L https://raw.github.com/pypa/pip/master/contrib/get-pip.py | python
-}
-
-source ~/.autoenv/activate.sh
 
 export BROWSER="google-chrome-unstable"
 
