@@ -80,6 +80,11 @@ export MAN_POSIXLY_CORRECT=1
 # Do not freeze terminal on Ctrl+s
 stty stop ''
 
+
+# Use antigen for ZSH plugin loading
+source $HOME/.zsh/func/antigen.zsh
+antigen bundle zsh-users/zsh-syntax-highlighting
+
 # Load python virtualenv environment
 function work(){
     ENV_NAME=$1
@@ -105,12 +110,7 @@ function setup-pip() {
 
 source ~/.autoenv/activate.sh
 
-# Enable syntax highlighting
-.  /usr/share/zsh/site-contrib/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-# Enable git-flow completion
-. /etc/zsh/git-flow-completion.zsh
-
-export BROWSER="chromium"
+export BROWSER="google-chrome-unstable"
 
 function vi-search-fix() {
     zle vi-cmd-mode
