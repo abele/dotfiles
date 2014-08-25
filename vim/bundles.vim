@@ -56,6 +56,8 @@ Bundle 'tpope/vim-cucumber'
 Bundle 'saltstack/salt-vim'
 Bundle 'vim-scripts/nginx.vim'
 Bundle 'jgb/django.vim'
+
+Bundle 'Floobits/floobits-vim'
 " }}}
 "
 Bundle 'editorconfig/editorconfig-vim'
