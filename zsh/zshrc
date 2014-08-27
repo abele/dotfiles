@@ -63,12 +63,6 @@ export GIT_EDITOR="$EDITOR"
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" # Load RVM function
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 
-# Add simple directory navigation z.
-source ~/bin/z
-function precmd () {
-    _z --add "$(pwd -P)"
-}
-
 # Batch rename files
 autoload -U zmv
 alias mmv='noglob zmv -W'
@@ -77,8 +71,6 @@ alias mmv='noglob zmv -W'
 export MAN_POSIXLY_CORRECT=1
 
 
-# Do not freeze terminal on Ctrl+s
-stty stop ''
 
 # Use antigen for ZSH plugin loading
 source $HOME/.zsh/func/antigen.zsh
@@ -86,12 +78,7 @@ source $HOME/.zsh/func/antigen.zsh
 antigen bundle zsh-users/zsh-syntax-highlighting
 # Automaticly load .env files
 antigen bundle sharat87/autoenv
-
-# Load python virtualenv environment
-function work(){
-    ENV_NAME=$1
-    source ${ENV_NAME:-venv}/bin/activate
-}
+antigen apply
 
 # Create clean slate directory to test out ideas
 function new-scratch {
@@ -120,7 +107,18 @@ bindkey "^W" backward-kill-word
 bindkey "^H" backward-delete-chari  # Control-h also deletes the previous char
 bindkey "^U" kill-line
 
+# Python setup
 export PYTHONSTARTUP="/home/abele/.config/python_startup.py"
+# Load python virtualenv environment
+function work(){
+    ENV_NAME=$1
+    source ${ENV_NAME:-venv}/bin/activate
+}
 
+#
+eval "$(fasd --init auto)"
+
+# Do not freeze terminal on Ctrl+s
+stty stop ''
 # Start X on login. See: http://wiki.gentoo.org/wiki/Start_X_on_login
 [[ $(tty) = "/dev/tty1" ]] && exec startx
