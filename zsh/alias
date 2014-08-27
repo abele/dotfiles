@@ -16,8 +16,6 @@ alias cpb='cd `project-root-path`'
 # Add current directory as bin
 alias acab='export PATH="$PATH:`pwd`"'
 
-alias o='xdg-open'
-
 # Git
 alias d='git checkout develop'
 alias m='git checkout master'
@@ -40,3 +38,7 @@ alias hvenv='work ~/hvenv'
 alias mvim='vim -u ~/.essential.vim'
 alias ns='new-scratch'
 alias in='ipython notebook'
+
+# fasd
+alias v='f -e vim' # quick opening files with vim
+alias o='a -e xdg-open' # quick opening files with xdg-open
