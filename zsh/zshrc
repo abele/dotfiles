@@ -58,6 +58,7 @@ setopt share_history
 # Use vim as default editor
 export EDITOR=`which vim`
 export GIT_EDITOR="$EDITOR"
+export TERMINAL=`which konsole`
 
 # Setup rvm
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" # Load RVM function
@@ -70,14 +71,10 @@ alias mmv='noglob zmv -W'
 # Remove man prompt for correct page
 export MAN_POSIXLY_CORRECT=1
 
-
-
 # Use antigen for ZSH plugin loading
 source $HOME/.zsh/func/antigen.zsh
-# Syntax highlighting bundle.
 antigen bundle zsh-users/zsh-syntax-highlighting
-# Automaticly load .env files
-antigen bundle sharat87/autoenv
+antigen bundle kennethreitz/autoenv
 antigen apply
 
 # Create clean slate directory to test out ideas
@@ -122,3 +119,11 @@ eval "$(fasd --init auto)"
 stty stop ''
 # Start X on login. See: http://wiki.gentoo.org/wiki/Start_X_on_login
 [[ $(tty) = "/dev/tty1" ]] && exec startx
+
+source $HOME/.antigen/repos/https-COLON--SLASH--SLASH-github.com-SLASH-kennethreitz-SLASH-autoenv.git/activate.sh
+
+if [ -e /usr/share/terminfo/x/xterm-256color ]; then
+    export TERM='xterm-256color'
+else
+    export TERM='xterm-color'
+fi
