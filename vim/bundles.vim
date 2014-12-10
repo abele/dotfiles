@@ -47,6 +47,8 @@ Bundle 'klen/vim-jsmode'
 
 Bundle 'mileszs/ack.vim'
 
+Plugin 'mattn/gist-vim'
+Plugin 'mattn/webapi-vim'
 
 Bundle 'davidhalter/jedi-vim'
 Bundle 'hynek/vim-python-pep8-indent'
@@ -56,8 +58,6 @@ Bundle 'tpope/vim-cucumber'
 Bundle 'saltstack/salt-vim'
 Bundle 'vim-scripts/nginx.vim'
 Bundle 'jgb/django.vim'
-
-Bundle 'Floobits/floobits-vim'
 " }}}
 "
 Bundle 'editorconfig/editorconfig-vim'

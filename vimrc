@@ -105,7 +105,7 @@ map <leader>t :CtrlPTag<CR>
 
 " Ignore version control artifacts
 let g:ctrlp_custom_ignore = {
-            \ 'dir':  '\v[\/]\.(git|hg|svn|egg|egg-info|tox)$|env$|dist$|data$',
+            \ 'dir':  '\v[\/]\.(git|hg|svn|egg|egg-info|tox)$|env$|build$|dist$|data$',
             \ 'file': '\v\.(exe|so|dll|pyc|png|jpg|tags|o)$|tags$',
             \ 'link': 'some_bad_symbolic_links',
             \ }
@@ -340,3 +340,16 @@ autocmd BufWinEnter *.rst call MatchTechWordsToAvoid()
 autocmd InsertEnter *.rst call MatchTechWordsToAvoid()
 autocmd InsertLeave *.rst call MatchTechWordsToAvoid()
 autocmd BufWinLeave *.rst call clearmatches()
+
+
+" Open and edit quick notes
+nmap <silent> <leader>N :vsp ~/Grive/quick_notes.txt<CR>
+nmap <silent> <leader>R :vsp ~/Grive/random.txt<CR>
+nmap <silent> <leader>J :vsp ~/Grive/jurnal.txt<CR>
+
+function! MapRunTestOnCurrentFile(currentFile)
+    echom a:currentFile
+    execute "map <leader>a :wa <bar> !inv test -m ".a:currentFile."<CR>"
+endfunction
+
+map <leader>S :call MapRunTestOnCurrentFile(expand('%'))<CR> 
