@@ -131,7 +131,7 @@ URxvt.matcher.pattern.2:  \\B(/\\S+?):(\\d+)(?=:|$)
 URxvt.matcher.launcher.2: vim +$2 $1
 
 URxvt*perl-ext-common: default,matcher,keyboard-select,clipboard
-URxvt.urlLauncher: chromium
+URxvt.url-launcher: /usr/bin/google-chrome-stable
 URxvt.matcher.button: 1
 
 URxvt.keysym.C-Delete: perl:matcher:last

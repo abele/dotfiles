@@ -30,7 +30,7 @@ shift $((OPTIND-1))
 profile_name=${@:-Default}
 
 main() {
-    google-chrome-unstable --profile-directory="${profile_name}" ${incognito} "${url}"
+    chrome --profile-directory="${profile_name}" ${incognito} "${url}"
 }
 
 

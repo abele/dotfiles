@@ -7,7 +7,7 @@
 set -e
 
 main() {
-    /usr/bin/google-chrome-unstable $*
+    /usr/bin/google-chrome-stable $*
 }
 
 main $*
