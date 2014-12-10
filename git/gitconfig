@@ -54,3 +54,5 @@
 	excludesfile = /home/abele/.gitignore_global
 [push]
 	default = simple
+[github]
+	user = abele
