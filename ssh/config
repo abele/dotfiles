@@ -1,44 +1,6 @@
-Host workTunnel
-    HostName noobser
-    User ja
-    Port 22
-
-    LocalForward localhost:2220 192.168.0.100:22
-    LocalForward localhost:8888 192.168.0.100:8080
-    LocalForward localhost:9000 192.168.0.100:9000
-
-Host japc
-    HostName localhost
-    User abele
-    Port 2220
-
-Host cc
-    HostName noobser
-    User ja
-
-Host noobser
-    HostName noobser
-    User ja
-
 Host dev
     HostName dev
     User ja
-
-Host bite
-    HostName bite
-    User abele
-
-Host vbox
-    HostName vbox
-    User bob
-
-Host vtest
-    HostName vtest
-    User ubuntu
-
-Host jds
-    HostName jds
-    User jd
 
 Host bmcdss
     HostName bmcdss
@@ -67,6 +29,14 @@ Host ling
 
 Host patty
     HostName patty
+    User root
+
+Host loadb
+    HostName loadb
+    User root
+
+Host app3
+    HostName app3
     User root
 
 Host maude
@@ -100,6 +70,14 @@ Host nelson
 
 Host cabin
     HostName cabin
+    User root
+
+Host waldo
+    HostName waldo
+    User root
+
+Host snakepit
+    HostName snakepit
     User root
 
 Host strops
