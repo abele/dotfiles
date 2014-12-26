@@ -10,8 +10,9 @@ compinit
 # bindkey '^R' history-incremental-search-backward
 
 # Add paths that should have been there by default
-export PATH=/sbin:/usr/local/sbin:/usr/local/bin:~/lib/bin:${PATH}
+export PATH="/sbin:/usr/local/sbin:/usr/local/bin:~/lib/bin:$PATH"
 export PATH="$HOME/bin:$PATH"
+export PATH="$HOME/.bin:$PATH"
 export PATH="$PATH:~/.gem/ruby/1.8/bin"
 export PATH="$HOME/local/bin:$PATH"
 
