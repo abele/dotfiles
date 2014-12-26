@@ -35,12 +35,10 @@ alias scratch='tmux attach-session -t scratch || tmux new-session -s scratch -n 
 alias myip='dig +short myip.opendns.com @resolver1.opendns.com'
 
 alias hvenv='work ~/hvenv'
-alias mvim='vim -u ~/.essential.vim'
+alias mvim='nvim -u ~/.mvimrc'
 alias ns='new-scratch'
 alias in='ipython notebook'
 
 # fasd
 alias v='f -e vim' # quick opening files with vim
 alias o='a -e xdg-open' # quick opening files with xdg-open
-
-alias nd='date +"%m-%d-%y"'
