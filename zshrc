@@ -88,7 +88,7 @@ function new-scratch {
     echo "New scratch dir ready for grinding ;>"
 }
 
-export BROWSER="google-chrome-unstable"
+export BROWSER="google-chrome-stable"
 
 function vi-search-fix() {
     zle vi-cmd-mode

@@ -66,7 +66,7 @@
 
 	  PAGER='less'
 	  DICT='dict'
-	  BROWSER='chromium'
+	  BROWSER="$BROWSER"
 
 	  HISTFILE="${XDG_DATA_HOME:-$HOME/.local/share}/bashrun2/history"
 	  PS1='>'
@@ -209,6 +209,11 @@
       # "gg:foo", then the %1 in "www.google.com/search?q=%1" will be
       # replaced with "foo", and the resulting url will be passed to the
       # browse action, which finally launches "$BROWSER <url>"
+
+    +handler google-calendar
+      --match '^gc'
+      --command  'google.com/calendar'
+      --action browse
 
     +handler define
       --match '^def:(.+)'
