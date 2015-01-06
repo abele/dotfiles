@@ -211,7 +211,7 @@
       # browse action, which finally launches "$BROWSER <url>"
 
     +handler google-calendar
-      --match '^gc'
+      --match '^gcal'
       --command  'google.com/calendar'
       --action browse
 
