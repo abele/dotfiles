@@ -1,17 +1,5 @@
-Host dev
-    HostName dev
-    User ja
-
 Host bmcdss
     HostName bmcdss
-    User ubuntu
-
-Host kol
-    HostName kol
-    User lightsoft
-
-Host pydev
-    HostName dev.python.lv
     User ubuntu
 
 Host stampy
@@ -67,10 +55,6 @@ Host nelson
     HostName nelson
     User nelson
     port 2048
-
-Host cabin
-    HostName cabin
-    User root
 
 Host waldo
     HostName waldo
