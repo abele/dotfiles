@@ -1,69 +1,33 @@
-set nocompatible               " be iMproved
-filetype off                   " required!
+set nocompatible              " be iMproved, required
+filetype off                  " required
 
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.mvim/bundle/Vundle.vim
+call vundle#begin()
 
-" let Vundle manage Vundle
-" required!
-Bundle 'gmarik/vundle'
+" let Vundle manage Vundle, required
+Plugin 'gmarik/Vundle.vim'
 
-" ====== Bundles ==========
-Bundle 'tpope/vim-fugitive'
-Bundle 'tpope/vim-commentary'
-Bundle 'tpope/vim-surround'
-Bundle 'tpope/vim-eunuch'
-Bundle 'tpope/vim-unimpaired'
 
-Bundle 'vim-scripts/matchit.zip'
-
-" Navigation {{{
-Bundle 'Lokaltog/vim-easymotion'
-Bundle 'kien/ctrlp.vim'
-" }}}
-
-" Visuals {{{
-Bundle 'bronson/vim-trailing-whitespace'
-Bundle 'Lokaltog/powerline'
-Bundle 'flazz/vim-colorschemes'
-" }}}
-
-" vim-snipmate and its dependencies {{{
-Bundle 'MarcWeber/vim-addon-mw-utils'
-Bundle 'tomtom/tlib_vim'
-Bundle 'honza/vim-snippets'
-Bundle 'garbas/vim-snipmate'
-" }}}
-
-Bundle 'vim-scripts/ZoomWin'
-Bundle 'majutsushi/tagbar'
-Bundle 'vim-scripts/YankRing.vim'
-Bundle 'vim-scripts/AutoTag'
-
-" Programming {{{
-Bundle 'klen/python-mode'
-Bundle 'mattn/emmet-vim'
-Bundle 'klen/vim-jsmode'
-
-Bundle 'mileszs/ack.vim'
-
-Plugin 'mattn/gist-vim'
-Plugin 'mattn/webapi-vim'
-
-Bundle 'davidhalter/jedi-vim'
-Bundle 'hynek/vim-python-pep8-indent'
-Bundle 'alfredodeza/pytest.vim'
-Bundle 'tpope/vim-cucumber'
-
-Bundle 'saltstack/salt-vim'
-Bundle 'vim-scripts/nginx.vim'
-Bundle 'jgb/django.vim'
-" }}}
-"
+" Define bundles via Github repos
+Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'wikitopian/hardmode'
+Plugin 'tpope/vim-fugitive'
+Plugin 'mileszs/ack.vim'
 Bundle 'editorconfig/editorconfig-vim'
 
-Bundle 'airblade/vim-gitgutter'
-Bundle 'vim-scripts/lua.vim--Ko'
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
 
-filetype plugin indent on     " required!
-filetype plugin on
+" To ignore plugin indent changes, instead use:
+"filetype plugin on
+"
+" Brief help
+" :PluginList       - lists configured plugins
+" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
+" :PluginSearch foo - searches for foo; append `!` to refresh local cache
+" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
+"
+" see :h vundle for more details or wiki for FAQ
+" Put your non-Plugin stuff after this line

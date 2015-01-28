@@ -1,293 +1,88 @@
-" vim: foldmethod=marker
-" Load bundle configurations
 source ~/.vim/bundles.vim
 
-" Very long history
-set history=10000
-" ======= Color scheme ====== {{{1
-set background=dark
-syntax enable
+let mapleader = " "
 
-" Add matcher style so it is not rewritten by color scheme
-autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
+set nobackup
+set nowritebackup
+set noswapfile
+set ruler
 
-colorscheme xoria256
-
-" Highlight current line without underline
-hi CursorLine term=bold cterm=bold
-
-set t_ti= t_te=
-
-" ======= Convenience ====== {{{1
-" Use comma as Leader key
-let mapleader=","
-
-" Quickly edit/reload the vimrc file
-nmap <silent> <leader>ev :edit $MYVIMRC<CR>
-if has("autocmd")
-    autocmd! bufwritepost $MYVIMRC source $MYVIMRC
+" Switch syntax highlighting on, when the terminal has colors
+" " Also switch on highlighting the last used search pattern.
+if (&t_Co > 2 || has("gui_running")) && !exists("syntax_on")
+  syntax on
 endif
 
-" Call help for word under cursor in vim files
-autocmd FileType vim nnoremap K :exe ":help ".expand("<cword>")<CR>
+filetype plugin on
+augroup vimrcEx
+  autocmd!
 
-" Toggle paste indention
-set pastetoggle=<F2>
+  " When editing a file, always jump to the last known cursor position.
+  " Don't do it for commit messages, when the position is invalid, or when
+  " inside an event handler (happens when dropping a file on gvim).
+  autocmd BufReadPost *
+    \ if &ft != 'gitcommit' && line("'\"") > 0 && line("'\"") <= line("$") |
+    \   exe "normal g`\"" |
+    \ endif
 
-" YankRing settings
-let g:yankring_history_file = '.yankring-history'
-nnoremap ,yr :YRShow<CR>
-nnoremap <C-y> :YRShow<CR>
+  " Set syntax highlighting for specific file types
+  autocmd BufRead,BufNewFile *.md set filetype=markdown
+  autocmd BufRead,BufNewFile *.rst set filetype=rst
 
-" Show current line
-set cursorline
+  " Enable spellchecking for Markdown, reStructuredText
+  autocmd FileType markdown,rst setlocal spell
 
-" Show typed in command
-set showcmd
-set cmdheight=2
+  " Automatically wrap at 80 characters for Markdown, reStructuredText
+  autocmd BufRead,BufNewFile *.md,*.rst setlocal textwidth=80
 
-" Allways show status line
-set laststatus=2
+  " Automatically wrap at 72 characters and spell check git commit messages
+  autocmd FileType gitcommit setlocal textwidth=72
+  autocmd FileType gitcommit setlocal spell
 
-" Show mode what you're in
-set showmode
+  " Allow stylesheets to autocomplete hyphenated words
+  autocmd FileType css,scss,sass setlocal iskeyword+=-
+augroup END
 
-" Make tab completion for files/buffers act like bash
-set wildmenu
-
-" We have to have a winheight bigger than we want to set winminheight. But if
-" we set winheight to be huge before winminheight, the winminheight set will
-" fail.
-set winheight=5
-set winminheight=5
-set winheight=999
-
-" Always show tab bar
-set showtabline=2
-
-" Window width
-set winwidth=79
-
-
-map ,dj :set filetype=htmldjango<CR>
-
-" ==========  Search ========= {{{1
-
-set hlsearch
-set incsearch
-
-" Remove higlighting by pressing enter
-function! MapCR()
-    nnoremap <silent> <CR> :nohlsearch<CR>
-endfunction
-call MapCR()
-
-" Leave the return key alone when in command line windows, since it's used
-" to run commands there.
-autocmd! CmdwinEnter * :unmap <cr>
-autocmd! CmdwinLeave * :call MapCR()
-
-set ignorecase
-set smartcase
-set showmatch
-
-" =========== Editing ======== {{{1
-
-set expandtab
-set tabstop=4
-set shiftwidth=4
-set softtabstop=4
-
-" ========= Navigation ====== {{{1
-map <leader>f :CtrlP<CR>
-map <leader>b :CtrlPBuffer<CR>
-map <leader>t :CtrlPTag<CR>
-
-" Ignore version control artifacts
+" CtrlP {
 let g:ctrlp_custom_ignore = {
-            \ 'dir':  '\v[\/]\.(git|hg|svn|egg|egg-info|tox)$|env$|build$|dist$|data$',
-            \ 'file': '\v\.(exe|so|dll|pyc|png|jpg|tags|o)$|tags$',
-            \ 'link': 'some_bad_symbolic_links',
-            \ }
+  \ 'dir':  '\v[\/]\.(git|hg|svn|venv)$|venv$',
+  \ 'file': '\v\.(exe|so|dll|pyc)$',
+  \ }
+" }
 
-let g:ctrlp_root_markers = ['Guardfile']
 
-" No cursor keys
-map <up> <nop>
-map <down> <nop>
-map <left> <nop>
-map <right> <nop>
+" HardMode {
+autocmd VimEnter,BufNewFile,BufReadPost * silent! call HardMode()
+nnoremap <leader>h <Esc>:call ToggleHardMode()<CR>
+" }
 
-" Easy window navigation
-map <C-h> <C-w>h
-map <C-j> <C-w>j
-map <C-k> <C-w>k
-map <C-l> <C-w>l
 
-" Allow backgrounding buffers without writing them, and remember marks/undo
-" for backgrounding buffers
-set hidden
+" Numbers {
+set number
+set numberwidth=5
+" }
 
-" Navigate back and forth buffers
-map <silent> <leader>z :bp<CR>
-map <silent> <leader>x :bn<CR>
-
-" ========= Programming =========== {{{1
-" Some file types should wrap their text
-function! s:setupWrapping()
-    set wrap
-    set linebreak
-    set textwidth=79
-    set formatoptions=cq
-    set wrapmargin=0
-    set nolist
-endfunction
-
-" Don't mess up HTML syntax highlighting
-let html_no_rendering = 1
-
-" Make sure all markdown files have the correct file type set and setup wrapping
-autocmd BufRead,BufNewFile *.{md,markdown,mdown,mkd,mkdn,txt} setf markdown | call s:setupWrapping()
-
-" Highlight bad whitespace
-autocmd BufRead,BufNewFile * match ExtraWhitespace /\s\+$\| \+\ze\t/
-
-" Find and remove all trailing whitespace.
-nnoremap <leader>rw :%s/\s\+$//<cr>:let @/=''<CR>
-
-" Use hash to comment *.cfg and *.ini files
-autocmd FileType dosini set commentstring=#\ %s
-
-" for ruby, auto indent with two spaces, always expand tabs
-autocmd FileType ruby,haml,eruby,yaml,html,htmldjango,mako,javascript,sass,cucumber set ai sw=2 sts=2 et
-
-" Use spell-check for commit messages
-autocmd FileType gitcommit set spell
-" Got to first line in git commit messages
-autocmd FileType gitcommit call setpos('.', [0, 1, 1, 0])
-" Enable spell-check in restructured text files
-autocmd FileType rst set spell
-
-" Show long lists in omni completion
-set completeopt=menuone,menu,longest
-
-" Set mako file type
-autocmd BufRead,BufNewFile *.mak set filetype=mako
-
-" Treat JSON files like JavaScript
-autocmd BufNewFile,BufRead *.json set filetype=javascript
-
-augroup python_configs
-    " Remove ALL autocommands of the current group.
-    autocmd!
-    " Add  to new file types
-    autocmd FileType python set textwidth=79 colorcolumn=+1
-    " make Python follow PEP8 for whitespace (
-    "     http://www.python.org/dev/peps/pep-0008/ )
-    autocmd FileType python setlocal softtabstop=4 tabstop=4 shiftwidth=4 expandtab
-
-    autocmd FileType python set commentstring=#\ %s
-
-    let g:pymode_doc = 0
-    let g:pymode_run = 0
-
-    let g:pymode_lint = 1
-    let g:pymode_lint_ignore = ""
-    let g:pymode_lint_cwindow = 0
-
-    let g:pymode_folding = 0
-    let g:pymode_paths = ['./env', './venv']
-
-    " Key for set/unset breakpoint
-    let g:pymode_breakpoint_key = '<leader>sb'
-
-    " Load rope plug-in
-    let g:pymode_rope = 1
-    " Auto create and open ropeproject
-    let g:pymode_rope_vim_completion = 0
-    let g:pymode_rope_auto_project = 1
-    let g:pymode_rope_autoimport_modules = ["os", "shutil", "datetime"]
-
-    " Auto fix vim python paths if virtualenv enabled
-    let g:pymode_virtualenv = 1
-
-    " Use pep8-indent plug-in
-    let g:pymode_indent = 0
-
-    autocmd FileType python " Mark text width
-augroup END
-
-augroup javascript_config
-    " Remove ALL autocommands of the current group.
-    autocmd!
-    autocmd FileType javascript set relativenumber
-augroup END
-" ========== Backup ================ {{{1
-
-" do not keep a backup file, use versions instead
-set nobackup
-set noswapfile
-
-" ========== MISC ================ {{{1
-" Persist folds
-autocmd BufWinLeave * silent! mkview
-autocmd BufWinEnter * silent! loadview
-
-" Highlight bad whitespace
-autocmd BufRead,BufNewFile,BufWinLeave,BufWinEnter * match ExtraWhitespace /\s\+$\| \+\ze\t/
-
-" Mark text width
-set textwidth=79
+" Make it obvious where 80 characters is
+set textwidth=80
 set colorcolumn=+1
 
-" Show line numbers relative to current position
-set relativenumber
+" Softtabs, 2 spaces
+set tabstop=2
+set shiftwidth=2
+set shiftround
+set expandtab
 
-map <silent><F3> :TagbarToggle<CR>
+" Display extra whitespace
+set list listchars=tab:»·,trail:·,nbsp:·
 
-let g:user_zen_leader_key = '<c-e>'
+" Open and edit quick notes
+nmap <silent> <leader>N :vsp ~/Grive/quick_notes.txt<CR>
+nmap <silent> <leader>R :vsp ~/Grive/random.txt<CR>
+nmap <silent> <leader>J :vsp ~/Grive/jurnal.txt<CR>
 
-" Search online documentation for word under cursor
-function! OnlineDoc()
-    echo &ft
-    if &ft =~ "python"
-        let s:urlTemplate = "\"http://docs.python.org/2/search.html?q=%&check_keywords=yes&area=default\""
-    endif
-    let s:browser = "chromium"
-    let s:wordUnderCursor = expand("<cword>")
-    let s:url = substitute(s:urlTemplate, "%", s:wordUnderCursor, "g")
-    let s:cmd = "!" . s:browser . " " . s:url
-    execute s:cmd
-endfunction
+nmap <silent> <leader>si :!isort %<CR>
 
-" Online doc search.
-map ,od :call OnlineDoc()<CR>
-
-" Disable JS mode
-let g:jsmode = 0
-
-" ========== TRIAL ================ {{{1
-" Persist folds
-" Open multiple lines (insert empty lines) before or after current line,
-" and position cursor in the new space, with at least one blank line
-" before and after the cursor.
-" See: http://vim.wikia.com/wiki/Insert_multiple_lines
-function! OpenLines(nrlines, dir)
-  let nrlines = a:nrlines < 3 ? 3 : a:nrlines
-  let start = line('.') + a:dir
-  call append(start, repeat([''], nrlines))
-  if a:dir < 0
-    normal! 3k
-  else
-    normal! 3j
-  endif
-endfunction
-" Mappings to open multiple lines and enter insert mode.
-nnoremap <Leader>o :<C-u>call OpenLines(v:count, 0)<CR>S
-nnoremap <Leader>O :<C-u>call OpenLines(v:count, -1)<CR>S
-
-
-" Ack python files for WORD under cursor
+" Ack files for WORD under cursor {
 function! AckWordUnderCursor(wordType)
     echo &ft
     let s:wordUnderCursor = expand(a:wordType)
@@ -295,61 +90,6 @@ function! AckWordUnderCursor(wordType)
     execute s:cmd
 endfunction
 
-" Online doc search.
 map ,w :call AckWordUnderCursor("<cword>")<CR>
 map ,W :call AckWordUnderCursor("<cWORD>")<CR>
-
-" Search PyPi index for word under cursor
-function! PyPi()
-    echo &ft
-    let s:urlTemplate = "\"https://pypi.python.org/pypi?\\%3Aaction=search&term=#&submit=search\""
-    let s:browser = "chromium"
-    let s:wordUnderCursor = expand("<cword>")
-    let s:url = substitute(s:urlTemplate, "#", s:wordUnderCursor, "g")
-    let s:cmd = "!" . s:browser . " " . s:url
-    execute s:cmd
-endfunction
-
-" Online doc search.
-map ,ai :call PyPi()<CR>
-
-" Allow saving of files as sudo when I forgot to start vim using sudo.
-cmap w!! w !sudo tee > /dev/null %
-
-
- " Highlight words to avoid in tech writing
- " =======================================
- "
- "   obviously, basically, simply, of course, clearly,
- "   just, everyone knows, However, So, easy
-
- "   http://css-tricks.com/words-avoid-educational-writing/
-
-highlight TechWordsToAvoid ctermbg=red ctermfg=white
-function MatchTechWordsToAvoid()
-    match TechWordsToAvoid /\c\<\(obviously\|basically\|simply\|of\scourse\|clearly\|just\|everyone\sknows\|however\|so,\|easy\)\>/
-endfunction
-autocmd FileType markdown call MatchTechWordsToAvoid()
-autocmd BufWinEnter *.md call MatchTechWordsToAvoid()
-autocmd InsertEnter *.md call MatchTechWordsToAvoid()
-autocmd InsertLeave *.md call MatchTechWordsToAvoid()
-autocmd BufWinLeave *.md call clearmatches()
-
-autocmd FileType rst call MatchTechWordsToAvoid()
-autocmd BufWinEnter *.rst call MatchTechWordsToAvoid()
-autocmd InsertEnter *.rst call MatchTechWordsToAvoid()
-autocmd InsertLeave *.rst call MatchTechWordsToAvoid()
-autocmd BufWinLeave *.rst call clearmatches()
-
-
-" Open and edit quick notes
-nmap <silent> <leader>N :vsp ~/Grive/quick_notes.txt<CR>
-nmap <silent> <leader>R :vsp ~/Grive/random.txt<CR>
-nmap <silent> <leader>J :vsp ~/Grive/jurnal.txt<CR>
-
-function! MapRunTestOnCurrentFile(currentFile)
-    echom a:currentFile
-    execute "map <leader>a :wa <bar> !inv test -m ".a:currentFile."<CR>"
-endfunction
-
-map <leader>S :call MapRunTestOnCurrentFile(expand('%'))<CR> 
+" }

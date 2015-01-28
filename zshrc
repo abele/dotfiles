@@ -57,7 +57,7 @@ setopt share_history
 [[ -a "$HOME/.ssh/environment" ]] && source "$HOME/.ssh/environment"
 
 # Use vim as default editor
-export EDITOR=`which nvim`
+export EDITOR=`which vim`
 export GIT_EDITOR="$EDITOR"
 export TERMINAL=`which konsole`
 

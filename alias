@@ -35,7 +35,7 @@ alias scratch='tmux attach-session -t scratch || tmux new-session -s scratch -n 
 alias myip='dig +short myip.opendns.com @resolver1.opendns.com'
 
 alias hvenv='work ~/hvenv'
-alias mvim='nvim -u ~/.mvimrc'
+alias mvim='vim -u ~/.mvimrc'
 alias ns='new-scratch'
 alias in='ipython notebook'
 
