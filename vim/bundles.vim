@@ -2,7 +2,7 @@ set nocompatible              " be iMproved, required
 filetype off                  " required
 
 " set the runtime path to include Vundle and initialize
-set rtp+=~/.mvim/bundle/Vundle.vim
+set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
 " let Vundle manage Vundle, required
@@ -15,6 +15,8 @@ Plugin 'wikitopian/hardmode'
 Plugin 'tpope/vim-fugitive'
 Plugin 'mileszs/ack.vim'
 Bundle 'editorconfig/editorconfig-vim'
+Plugin 'vim-scripts/ctags.vim'
+Plugin 'scrooloose/syntastic'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required

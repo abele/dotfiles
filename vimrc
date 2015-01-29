@@ -93,3 +93,7 @@ endfunction
 map ,w :call AckWordUnderCursor("<cword>")<CR>
 map ,W :call AckWordUnderCursor("<cWORD>")<CR>
 " }
+
+map ]l :cn<CR>
+map [l :cp<CR>
+
