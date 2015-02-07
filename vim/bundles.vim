@@ -17,6 +17,8 @@ Plugin 'mileszs/ack.vim'
 Bundle 'editorconfig/editorconfig-vim'
 Plugin 'vim-scripts/ctags.vim'
 Plugin 'scrooloose/syntastic'
+Plugin 'vim-scripts/tComment'
+Plugin 'vim-scripts/vim-gitgutter'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
