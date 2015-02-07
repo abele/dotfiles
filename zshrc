@@ -25,9 +25,6 @@ test -s ~/.alias && . ~/.alias || true
 # Fix ls colors for solarized theme
 export LSCOLORS="ExGxBxDxCxEgEdxbxgxcxd"
 
-# Use colors for grep
-export GREP_OPTIONS="--color"
-
 # Add colors to less
 export LESS="-R"
 
