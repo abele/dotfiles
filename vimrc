@@ -48,6 +48,11 @@ let g:ctrlp_custom_ignore = {
   \ 'dir':  '\v[\/]\.(git|hg|svn|venv)$|venv$',
   \ 'file': '\v\.(exe|so|dll|pyc)$',
   \ }
+nnoremap <Leader>o :CtrlP<CR>
+" }
+
+" Keyboard improvements {
+nnoremap <Leader>w :w<CR>
 " }
 
 
