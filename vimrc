@@ -6,6 +6,8 @@ set nobackup
 set nowritebackup
 set noswapfile
 set ruler
+set incsearch
+set smartcase
 
 " Switch syntax highlighting on, when the terminal has colors
 " " Also switch on highlighting the last used search pattern.
