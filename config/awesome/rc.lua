@@ -361,9 +361,21 @@ awful.rules.rules = {
           awful.placement.centered(c,nil)
       end
   },
-
+      -- Pomello Chrome plugin
+      { rule = { class = "Google-chrome-stable", instance = "crx_ahjnfakocpfoocnncbgmondnnnlfjide" },
+      properties = { floating = true,
+                     width = 100,
+                     height = 30,
+                     above = true },
+      callback = function (c)
+          awful.placement.centered(c,nil)
+      end
+    },
     { rule = { class = "gimp" },
       properties = { floating = true } },
+    { rule = { class = "Hangouts" },
+      properties = { floating = true,
+                     tag = tags[1][5] } },
     -- Set Firefox to always map on tags number 2 of screen 1.
     -- { rule = { class = "Firefox" },
     --   properties = { tag = tags[1][2] } },
