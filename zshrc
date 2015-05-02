@@ -56,7 +56,7 @@ setopt share_history
 # Use vim as default editor
 export EDITOR=`which vim`
 export GIT_EDITOR="$EDITOR"
-export TERMINAL=`which konsole`
+export TERMINAL=`which urxvt`
 
 # Setup rvm
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" # Load RVM function
