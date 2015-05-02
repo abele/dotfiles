@@ -1,9 +1,11 @@
 #!/usr/bin/env python2
 # -*- coding: utf-8 -*-
+import os
 import sys
 import subprocess
+import shutil
 
-VENV_VERSION = '1.9.1'
+VENV_VERSION = '12.1.1'
 PYPI_VENV_BASE = 'https://pypi.python.org/packages/source/v/virtualenv/'
 
 
@@ -20,13 +22,24 @@ def shellcmd(cmd, echo=True):
     return out
 
 
-def main(initial_env='venv', python='python2'):
+def create_venv(initial_env='venv', python='python2'):
     dirname = 'virtualenv-' + VENV_VERSION
     tgz_file = dirname + '.tar.gz'
+    cache_dir = os.path.join(os.path.expanduser('~'), '.cache', 'venv')
+
+    if not os.path.isdir(cache_dir):
+        os.makedirs(cache_dir)
 
     # Fetch virtualenv from PyPI
-    venv_url = PYPI_VENV_BASE + '/' + tgz_file
-    shellcmd('wget {0}'.format(venv_url))
+    if os.path.exists(os.path.join(cache_dir, tgz_file)):
+        shutil.copy(os.path.join(cache_dir, tgz_file), os.getcwd())
+    else:
+        venv_url = PYPI_VENV_BASE + '/' + tgz_file
+        shellcmd('wget -P {cache} {url}'.format(
+            cache=cache_dir,
+            url=venv_url
+        ))
+        shutil.copy(os.path.join(cache_dir, tgz_file), os.getcwd())
 
     # Untar
     shellcmd('tar xzf {0}'.format(tgz_file))
@@ -37,10 +50,21 @@ def main(initial_env='venv', python='python2'):
 
     # Install the virtualenv package itself into the initial env
     shellcmd('{0}/bin/pip install {1}'.format(initial_env, tgz_file))
+    # Upgrade PIP it self
+    shellcmd('{0}/bin/pip install --upgrade pip'.format(initial_env))
 
     # Cleanup
     shellcmd('rm -rf {0} {1}'.format(dirname, tgz_file))
 
 
+def main(initial_env='venv', python='python2'):
+    try:
+        create_venv(initial_env, python)
+    except KeyboardInterrupt:
+        pass
+
+    return 0
+
+
 if __name__ == '__main__':
-    main()
+    sys.exit(main())
