@@ -20,6 +20,25 @@ Plugin 'scrooloose/syntastic'
 Plugin 'vim-scripts/tComment'
 Plugin 'vim-scripts/vim-gitgutter'
 
+" Language support {
+Plugin 'vim-scripts/python.vim'
+Plugin 'vim-scripts/pythoncomplete'
+Plugin 'hynek/vim-python-pep8-indent'
+Plugin 'vim-scripts/scala.vim'
+Plugin 'lepture/vim-jinja'
+" }
+
+" Experiment {
+" Collects metrics on project work
+Plugin 'wakatime/vim-wakatime'
+" Expand CSS syntax elements to full HTML
+Plugin 'mattn/emmet-vim'
+" Add gitignore files to VIM's wildignore
+Plugin 'vim-scripts/gitignore'
+" }
+
+" Plugin 'Floobits/floobits-vim'
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
