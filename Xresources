@@ -100,8 +100,8 @@ XTerm*cursorColor    : _cursorColor
 
 
 !! Font setup
-URxvt.font: xft:DejaVu Sans Mono:size=11
-URxvt.boldfont: xft:DejaVu Sans Mono:size=11:style=bold
+URxvt.font: xft:DejaVu Sans Mono:size=14
+URxvt.boldfont: xft:DejaVu Sans Mono:size=14:style=bold
 
 Xft.dpi:96
 Xft.hinting: 1
