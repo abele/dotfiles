@@ -26,7 +26,15 @@ Plugin 'vim-scripts/pythoncomplete'
 Plugin 'hynek/vim-python-pep8-indent'
 Plugin 'vim-scripts/scala.vim'
 Plugin 'lepture/vim-jinja'
+Plugin 'davidhalter/jedi-vim'
 " }
+
+" Snippets {
+Plugin 'SirVer/ultisnips'
+Plugin 'honza/vim-snippets'
+" }
+
+Plugin 'bling/vim-airline'
 
 " Experiment {
 " Collects metrics on project work
