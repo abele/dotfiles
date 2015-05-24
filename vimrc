@@ -9,7 +9,7 @@ set ruler
 
 " Search {
 set incsearch
-set smartcase
+set ignorecase smartcase
 set hlsearch
 " }
 
@@ -122,5 +122,8 @@ map <leader>pb iimport pytest; pytest.set_trace()
 " }
 
 " Autocompletion {
-set completeopt=preview
-"
+set completeopt=longest,menuone,preview
+" }
+" Status line {
+let g:airline#extensions#tabline#enabled = 1
+" }
