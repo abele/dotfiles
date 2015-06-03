@@ -1,6 +1,6 @@
 #!/bin/bash
 
-SSH_ASKPASS=ssh-askpass-fullscreen
+SSH_ASKPASS=/usr/lib/ssh/x11-ssh-askpass
 
 # Require ssh-askpass
 command -v "$SSH_ASKPASS" >/dev/null 2>&1 || { echo >&2 "I require $SSH_ASKPASS but it's not installed.  Aborting."; exit 1; }
