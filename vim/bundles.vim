@@ -27,6 +27,8 @@ Plugin 'hynek/vim-python-pep8-indent'
 Plugin 'vim-scripts/scala.vim'
 Plugin 'lepture/vim-jinja'
 Plugin 'davidhalter/jedi-vim'
+Plugin 'xolox/vim-misc'
+Plugin 'vim-scripts/lua.vim'
 " }
 
 " Snippets {
