@@ -6,7 +6,7 @@ import subprocess
 import shutil
 
 VENV_VERSION = '13.0.1'
-PYPI_VENV_BASE = 'https://pypi.python.org/packages/source/v/virtualenv/'
+PYPI_VENV_BASE = 'https://pypi.python.org/packages/source/v/virtualenv'
 
 
 def shellcmd(cmd, echo=True):
