@@ -50,7 +50,8 @@
 [merge]
   tool = vimdiff
 [core]
-  excludesfile = /home/abele/.gitignore_global
+  excludesfile = ~/.gitignore_global
+  autocrlf = input
 [push]
   default = simple
 [github]
