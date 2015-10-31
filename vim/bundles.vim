@@ -20,15 +20,20 @@ Plugin 'scrooloose/syntastic'
 Plugin 'vim-scripts/tComment'
 Plugin 'vim-scripts/vim-gitgutter'
 
+Plugin 'terryma/vim-expand-region'
+
 " Language support {
 Plugin 'vim-scripts/python.vim'
 Plugin 'vim-scripts/pythoncomplete'
 Plugin 'hynek/vim-python-pep8-indent'
+Plugin 'python-rope/ropevim'
 Plugin 'vim-scripts/scala.vim'
 Plugin 'lepture/vim-jinja'
 Plugin 'davidhalter/jedi-vim'
 Plugin 'xolox/vim-misc'
 Plugin 'vim-scripts/lua.vim'
+" Salt-Stack support
+Plugin 'saltstack/salt-vim'
 " }
 
 " Snippets {
@@ -45,6 +50,8 @@ Plugin 'wakatime/vim-wakatime'
 Plugin 'mattn/emmet-vim'
 " Add gitignore files to VIM's wildignore
 Plugin 'vim-scripts/gitignore'
+" Zeal documentation support 
+Plugin 'KabbAmine/zeavim.vim'
 " }
 
 " Plugin 'Floobits/floobits-vim'
