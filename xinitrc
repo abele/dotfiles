@@ -5,6 +5,8 @@
 
 # Disable bell
 xset -b
+# Set mouse acceleration
+xset mouse 5 0
 
 # Load custom keyboard layouts
 xmodmap ~/.Xmodmap
