@@ -15,6 +15,8 @@ export PATH="$HOME/bin:$PATH"
 export PATH="$HOME/.bin:$PATH"
 export PATH="$PATH:~/.gem/ruby/1.8/bin"
 export PATH="$HOME/local/bin:$PATH"
+export PATH="$PATH:$HOME/go/bin"
+
 
 # Load local settings.
 test -s ~/local/bin/local-settings && . ~/local/bin/local-settings || true
@@ -54,9 +56,9 @@ setopt share_history
 [[ -a "$HOME/.ssh/environment" ]] && source "$HOME/.ssh/environment"
 
 # Use vim as default editor
-export EDITOR=`which vim`
+export EDITOR="$(which vim)"
 export GIT_EDITOR="$EDITOR"
-export TERMINAL="/usr/bin/xfce4-terminal"
+export TERMINAL="$(which sakura)"
 
 # Setup rvm
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" # Load RVM function
@@ -125,3 +127,5 @@ if [ -e /usr/share/terminfo/x/xterm-256color ]; then
 else
     export TERM='xterm-color'
 fi
+
+export GOPATH="$HOME/go"
