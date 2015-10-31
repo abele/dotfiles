@@ -1,9 +1,9 @@
 #!/usr/bin/env python2
 # -*- coding: utf-8 -*-
 import os
-import sys
-import subprocess
 import shutil
+import subprocess
+import sys
 
 VENV_VERSION = '13.0.1'
 PYPI_VENV_BASE = 'https://pypi.python.org/packages/source/v/virtualenv'
