@@ -62,7 +62,7 @@ let g:ctrlp_user_command = [
   \ 'git --git-dir=%s/.git ls-files -oc --exclude-standard'
 \ ]
 
-let g:ctrlp_cmd = 'CtrlPMixed'
+"let g:ctrlp_cmd = 'CtrlPMixed'
 " }
 
 " Keyboard improvements {
@@ -95,10 +95,12 @@ set expandtab
 set list listchars=tab:»·,trail:·,nbsp:·
 
 " Open and edit quick notes
-nmap <silent> <leader>N :vsp ~/Grive/quick_notes.txt<CR>
-nmap <silent> <leader>R :vsp ~/Grive/random.txt<CR>
-nmap <silent> <leader>J :vsp ~/Grive/jurnal.txt<CR>
-nmap <silent> <leader>L :vsp ~/Grive/worklog.txt<CR>
+nmap <silent> <leader>N :vsp ~/Documents/janis.abele@gmail.com/quick_notes.txt<CR>
+nmap <silent> <leader>R :vsp ~/Documents/janis.abele@gmail.com/random.txt<CR>
+nmap <silent> <leader>J :vsp ~/Documents/janis.abele@gmail.com/jurnal.txt<CR>
+nmap <silent> <leader>AJ :vsp ~/Documents/janis.abele@gmail.com/journal<CR>
+nmap <silent> <leader>L :vsp ~/Documents/janis.abele@gmail.com/worklog.txt<CR>
+nmap <silent> <leader>T :vsp ~/Documents/janis.abele@gmail.com/TODO.txt<CR>
 
 nmap <silent> <leader>si :!isort %<CR>
 
@@ -117,13 +119,23 @@ map ,W :call AckWordUnderCursor("<cWORD>")<CR>
 map ]l :cn<CR>
 map [l :cp<CR>
 
-" Snippets  {
-map <leader>pb iimport pytest; pytest.set_trace()
-" }
-
 " Autocompletion {
 set completeopt=longest,menuone,preview
 " }
 " Status line {
 let g:airline#extensions#tabline#enabled = 1
 " }
+"
+nmap <Leader><Leader> V
+
+" Copy & paste to system clipboard with <Space>p and <Space>y:
+vmap <Leader>y "+y
+vmap <Leader>d "+d
+nmap <Leader>p "+p
+nmap <Leader>P "+P
+vmap <Leader>p "+p
+vmap <Leader>P "+P
+
+" Use region expanding
+vmap v <Plug>(expand_region_expand)
+vmap <C-v> <Plug>(expand_region_shrink)
