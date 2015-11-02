@@ -47,6 +47,9 @@ augroup vimrcEx
 
   " Allow stylesheets to autocomplete hyphenated words
   autocmd FileType css,scss,sass setlocal iskeyword+=-
+
+  " Treat xonsh like python
+  au BufNewFile,BufRead *.xsh,.xonshrc set ft=python
 augroup END
 
 " CtrlP {
@@ -139,3 +142,5 @@ vmap <Leader>P "+P
 " Use region expanding
 vmap v <Plug>(expand_region_expand)
 vmap <C-v> <Plug>(expand_region_shrink)
+" Set syntastics compatible unix shell
+set shell=/bin/bash
