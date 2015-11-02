@@ -1,0 +1,36 @@
+import os
+
+import xonsh
+
+from xonsh.environ import DEFAULT_VALUES
+
+# Add home specific paths
+$PATH.extend([
+    '~/.bin',
+    '~/local/bin',
+    '/usr/local/bin',
+    '~/go/bin',
+    '/sbin',
+    '/usr/local/sbin',
+])
+
+$PYTHONSTARTUP = os.path.join(DEFAULT_VALUES['XDG_CONFIG_HOME'], 'python_startup.py')
+$GOPATH = os.path.join($HOME, 'go')
+
+# some customization options
+# Add multiline indentation bling
+$XONSH_SHOW_TRACEBACK = True
+$XONSH_STORE_STDOUT = True
+$PROMPT = '∫ ' + xonsh.environ.DEFAULT_PROMPT
+$MULTILINE_PROMPT = '`·.,¸,.·*¯`·.,¸,.·*¯'
+
+# Do not freeze terminal on Ctrl+s
+stty stop ''
+
+
+if 'tty1' in $(tty):
+    print('Starting X.')
+    xexec startx
+
+hell = Exception('(╯°□°）╯︵ ┻━┻!')
+print('（╯°□°）╯︵(\ .o.)\ GET SHREDING!!!')
