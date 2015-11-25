@@ -52,6 +52,10 @@ Plugin 'mattn/emmet-vim'
 Plugin 'vim-scripts/gitignore'
 " Zeal documentation support 
 Plugin 'KabbAmine/zeavim.vim'
+" srclib
+Plugin 'lazywei/vim-sourcegraph'
+" Auto formating python code
+Plugin 'Chiel92/vim-autoformat'
 " }
 
 " Plugin 'Floobits/floobits-vim'
