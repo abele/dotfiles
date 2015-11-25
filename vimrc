@@ -13,11 +13,9 @@ set ignorecase smartcase
 set hlsearch
 " }
 
-" Switch syntax highlighting on, when the terminal has colors
-" " Also switch on highlighting the last used search pattern.
-if (&t_Co > 2 || has("gui_running")) && !exists("syntax_on")
-  syntax on
-endif
+set t_Co=256
+syntax on
+colorscheme default
 
 filetype plugin on
 augroup vimrcEx
@@ -144,3 +142,5 @@ vmap v <Plug>(expand_region_expand)
 vmap <C-v> <Plug>(expand_region_shrink)
 " Set syntastics compatible unix shell
 set shell=/bin/bash
+" Try to reload file on if file changed on filesystem
+set autoread
