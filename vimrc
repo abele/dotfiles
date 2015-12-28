@@ -144,3 +144,7 @@ vmap <C-v> <Plug>(expand_region_shrink)
 set shell=/bin/bash
 " Try to reload file on if file changed on filesystem
 set autoread
+
+" Highlight current cursor line
+:hi CursorLine cterm=NONE ctermbg=darkgrey ctermfg=white guibg=darkred guifg=white
+set cursorline
