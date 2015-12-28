@@ -1,9 +1,18 @@
 import os
 import datetime
+import development
 
 import xonsh
 
 from xonsh.environ import DEFAULT_VALUES
+
+
+development.setup()
+
+# Add multiline indentation bling
+hell = development.hell
+$PROMPT = '{BOLD_GREEN}{hostname} {BOLD_BLUE}{cwd_base} {branch_color}{curr_branch} {BOLD_BLUE}{prompt_end}{NO_COLOR} '
+$MULTILINE_PROMPT = '`·.,¸,.·*¯`·.,¸,.·*¯'
 
 # Add home specific paths
 $PATH.extend([
@@ -15,90 +24,12 @@ $PATH.extend([
     '/sbin',
     '/usr/local/sbin',
 ])
-
 $PYTHONSTARTUP = os.path.join(DEFAULT_VALUES['XDG_CONFIG_HOME'], 'python_startup.py')
 $GOPATH = os.path.join($HOME, 'go')
-
-# some customization options
-# Add multiline indentation bling
-$XONSH_SHOW_TRACEBACK = True
-$XONSH_STORE_STDOUT = True
-$PROMPT = '∫ ' + xonsh.environ.DEFAULT_PROMPT
-$MULTILINE_PROMPT = '`·.,¸,.·*¯`·.,¸,.·*¯'
-
-#
-# python virtual environment stuff
-#
-_ORIG_PATH = list($PATH)
-_ORIG_PROMPT = $PROMPT
-
-def _workon(args, stdin=None):
-    if args:
-        venv_name = args[0]
-    else:
-        venv_name = 'venv'
-
-    venv_path = os.path.join(os.getcwd(), venv_name)
-
-    if not os.path.exists(venv_path):
-        raise OSError("No such virtualenv: %s" % venv_path)
-    # XXX: use deque
-    $PATH = [os.path.join(venv_path, 'bin')]  + _ORIG_PATH
-    $VIRTUAL_ENV = venv_path
-    $PROMPT = "(%s) " % venv_name + _ORIG_PROMPT
-
-
-def _deactivate(args, stdin=None):
-    del $VIRTUAL_ENV
-    $PATH = list(_ORIG_PATH)
-    $PROMPT = _ORIG_PROMPT
-
-
-aliases['workon'] = _workon
-aliases['work'] = _workon
-aliases['deactivate'] = _deactivate
-
-
-def _z(args, stdin=None):
-    _fasd_ret = $(fasd -d @(args[0]))
-    _fasd_ret = _fasd_ret.splitlines()[0]
-    cd @(_fasd_ret)
-
-
-aliases['z'] = _z
-
-
-def _scratch(args, stdin=None):
-    """Create new scratch directory."""
-
-    new_dir = os.path.join(
-        $HOME,
-        'Tmp',
-        'scratch-' + str(int(datetime.datetime.now().timestamp())),
-    )
-    scratch_dir = os.path.join($HOME, 'scratch')
-
-    os.mkdir(new_dir)
-    os.remove(scratch_dir)
-    os.symlink(new_dir, scratch_dir)
-    cd @(scratch_dir)
-
-    print('New scratch dir ready for grinding (⌐■_■)')
-
-
-aliases['scratch'] = _scratch
-del _scratch
-
-
-
-# Do not freeze terminal on Ctrl+s
-stty stop ''
-
 $BROWSER = '/usr/bin/google-chrome-stable'
 
+#: Start X11 on first tty
 if 'tty1' in $(tty):
-    print('Starting X.')
     xexec startx
 
-hell = Exception('(╯°□°）╯︵ ┻━┻!')
-print('（╯°□°）╯︵(\ .o.)\ GET SHREDING!!!')
+print(development.GREETING)
