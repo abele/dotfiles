@@ -16,10 +16,12 @@ $MULTILINE_PROMPT = '`·.,¸,.·*¯`·.,¸,.·*¯'
 
 # Add home specific paths
 $PATH.extend([
-    '~/.bin',
-    '~/local/bin',
+    os.path.expanduser('~/.bin/'),
+    os.path.expanduser('~/local/bin/'),
+    os.path.expanduser('~/.local/bin/'),
     '/usr/local/bin',
     '/opt/anaconda/bin',
+    os.path.expanduser('~/go/bin/'),
     '~/go/bin',
     '/sbin',
     '/usr/local/sbin',
@@ -28,8 +30,11 @@ $PYTHONSTARTUP = os.path.join(DEFAULT_VALUES['XDG_CONFIG_HOME'], 'python_startup
 $GOPATH = os.path.join($HOME, 'go')
 $BROWSER = '/usr/bin/google-chrome-stable'
 
+$SHELL_TYPE = 'prompt_toolkit'
+
 #: Start X11 on first tty
 if 'tty1' in $(tty):
     xexec startx
 
+source-bash ~/.ssh/environment
 print(development.GREETING)
