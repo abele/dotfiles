@@ -102,6 +102,7 @@ nmap <silent> <leader>J :vsp ~/Documents/janis.abele@gmail.com/jurnal.txt<CR>
 nmap <silent> <leader>AJ :vsp ~/Documents/janis.abele@gmail.com/journal<CR>
 nmap <silent> <leader>L :vsp ~/Documents/janis.abele@gmail.com/worklog.txt<CR>
 nmap <silent> <leader>T :vsp ~/Documents/janis.abele@gmail.com/TODO.txt<CR>
+nmap <silent> <leader>W :vsp ~/Devel/sellfy/sellfy-docs/docs/<CR>
 
 nmap <silent> <leader>si :!isort %<CR>
 
