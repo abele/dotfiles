@@ -1,12 +1,10 @@
 #!/usr/bin/env python3
-"""Google Chrome Profile Selector
+"""List Google Chrome Profiles
 
-Usage: c  [options] [PROFILE]
-
-Arguments:
-  PROFILE Profile name to select.
+Usage: cls [options]
 
 Options:
+  -p --path                            Print profile path.
   -l LOG_LEVEL --log-level=LOG_LEVEL   Set logging serverity [default: error].
 
 """
@@ -36,9 +34,14 @@ def main(args=None):
 
         paths = {info['name']: path for path, info in
                 config['profile']['info_cache'].items()}
-        profile_path = paths.get(args['PROFILE'], 'Default')
-        cmd = [os.environ['BROWSER'], '--profile-directory={}'.format(profile_path)]
-        subprocess.call(cmd)
+
+
+        if args['--path']:
+            for name, path in paths.items():
+                print('{}: {}'.format(name, path)) 
+        else:
+            for name in paths:
+                print(name)
     except KeyboardInterrupt:
         pass
     except Exception:
