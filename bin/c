@@ -15,6 +15,8 @@ import logging
 import os
 import subprocess
 import sys
+from difflib import SequenceMatcher as SM
+import operator
 
 from docopt import docopt
 
@@ -36,7 +38,17 @@ def main(args=None):
 
         paths = {info['name']: path for path, info in
                 config['profile']['info_cache'].items()}
-        profile_path = paths.get(args['PROFILE'], 'Default')
+
+        # XXX: not functional, using index to access items
+        if args['PROFILE'] is None:
+            profile_path = 'Default'
+        else:
+            fuzy = {
+                profile: SM(None, args['PROFILE'], profile).ratio()
+                for profile in paths
+            }
+            profile_path = paths[max(fuzy.items(), key=operator.itemgetter(1))[0]]
+
         cmd = [os.environ['BROWSER'], '--profile-directory={}'.format(profile_path)]
         subprocess.call(cmd)
     except KeyboardInterrupt:
