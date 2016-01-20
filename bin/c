@@ -12,11 +12,11 @@ Options:
 """
 import json
 import logging
+import operator
 import os
 import subprocess
 import sys
-from difflib import SequenceMatcher as SM
-import operator
+from difflib import get_close_matches
 
 from docopt import docopt
 
@@ -29,34 +29,38 @@ def main(args=None):
         logging.basicConfig(level=getattr(logging, args['--log-level'].upper()))
 
     log = logging.getLogger(__name__)
-    log.debug(args)
+    log.debug('Passed in args: args=%s', args)
 
     try:
-        chrome_dir = os.path.expanduser('~/.config/google-chrome')
-        with open(os.path.join(chrome_dir,'Local State')) as f:
+        config_path = os.path.join(os.path.expanduser('~/.config/google-chrome'), 'Local State')
+        log.debug('Reading Google Chrome config: path=%s', config_path)
+        with open(config_path) as f:
             config = json.load(f)
 
         paths = {info['name']: path for path, info in
                 config['profile']['info_cache'].items()}
-
-        # XXX: not functional, using index to access items
-        if args['PROFILE'] is None:
-            profile_path = 'Default'
+        log.debug('Read available profiles: profiles=%s', paths)
+        if args['PROFILE']:
+            names = get_close_matches(args['PROFILE'], paths.keys(), cutoff=0)
+            log.debug('Found profile names matches: names=%s', names)
+            profile_path = paths[first(names)]
         else:
-            fuzy = {
-                profile: SM(None, args['PROFILE'], profile).ratio()
-                for profile in paths
-            }
-            profile_path = paths[max(fuzy.items(), key=operator.itemgetter(1))[0]]
+            profile_path = 'Default'
 
         cmd = [os.environ['BROWSER'], '--profile-directory={}'.format(profile_path)]
+        log.debug('Running cmd: cmd=%s', cmd)
         subprocess.call(cmd)
     except KeyboardInterrupt:
         pass
     except Exception:
+        log.exception('Something went wrong.')
         rc = os.EX_SOFTWARE
 
     return rc
+
+
+def first(iterable):
+    return next(iter(iterable))
 
 
 if __name__ == '__main__':
