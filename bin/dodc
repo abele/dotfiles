@@ -34,23 +34,23 @@ def main(args=None):
         args = docopt(__doc__, version='Digital Ocean DC controll 0.1.0')
         logging.basicConfig(level=getattr(logging, args['--log-level'].upper()))
 
-    logger = logging.getLogger(__name__)
-    logger.debug(args)
-
     log = logging.getLogger(__name__)
+    log = logging.getLogger(__name__)
+    log.debug('Using passed in arguments: args=%s', args)
 
     try:
         print_droplet_ssh_access(args['NAME'])
     except KeyboardInterrupt:
         pass
     except Exception:
-        logger.exception('Something went wrong.')
+        log.exception('Something went wrong.')
         rc = os.EX_SOFTWARE
 
     return rc
 
 
 def print_droplet_ssh_access(name):
+    log = logging.getLogger(__name__)
     token = os.environ['DIGITAL_OCEAN_TOKEN']
     resp = requests.get(
         'https://api.digitalocean.com/v2/droplets?page=1&per_page=10',
@@ -60,12 +60,15 @@ def print_droplet_ssh_access(name):
         },
     )
     droplets = parse_droplets(resp)
-    match_name = first(get_close_matches(name, [d['name'] for d in droplets]))
+    droplet_names = [d['name'] for d in droplets]
+    log.debug('Doplets found: droplets=%s', droplet_names)
+    match_name = first(get_close_matches(name, droplet_names, cutoff=0))
+    log.debug('Name match found: name=%s', match_name)
     print('\n'.join(
         map(lambda ip_str: 'root@' + ip_str,
             map(
                 lambda d: d['networks']['v4'][0]['ip_address'],
-                [droplets[match_name]],
+                filter(lambda d: d['name'] == match_name, droplets),
             ))))
 
 
