@@ -58,8 +58,10 @@ def copy_files(src, dest):
         if path.isfile(src):
             os.makedirs(path.dirname(dest))
             shutil.copy(src, dest)
+            os.remove(src)
         else:
             shutil.copytree(src, dest)
+            shutil.rmtree(src)
     except FileExistsError:
         print('File already in compost: src={} dest={} '.format(src, dest))
 
