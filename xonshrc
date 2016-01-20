@@ -37,4 +37,5 @@ if 'tty1' in $(tty):
     xexec startx
 
 source-bash ~/.ssh/environment
+source ~/.environment
 print(development.GREETING)
