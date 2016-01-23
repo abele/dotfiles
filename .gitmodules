@@ -1,0 +1,3 @@
+[submodule "config/awesome"]
+	path = config/awesome
+	url = git@github.com:abele/awesome-wm-config.git
