@@ -1,8 +1,0 @@
-[Desktop Entry]
-Name=wmname
-TryExec=wmname
-Exec=wmname LG3D
-Terminal=false
-Type=Application
-StartupNotify=false
-OnlyShowIn=awesome
