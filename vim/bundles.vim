@@ -32,8 +32,11 @@ Plugin 'lepture/vim-jinja'
 Plugin 'davidhalter/jedi-vim'
 Plugin 'xolox/vim-misc'
 Plugin 'vim-scripts/lua.vim'
-" Salt-Stack support
+Plugin 'pangloss/vim-javascript'
+" Salt-Stack
 Plugin 'saltstack/salt-vim'
+" Docker
+Plugin 'docker/docker' , {'rtp': '/contrib/syntax/vim/'}
 " }
 
 " Snippets {
