@@ -1,0 +1,23 @@
+#!/usr/bin/env python3
+import datetime as dt
+import os
+import sys
+import tempfile
+
+EDITOR  = os.environ['EDITOR']
+CAPLOG  = os.environ['CAPLOG']
+
+
+def main(entry):
+    if not entry:
+        _, filename = tempfile.mkstemp()
+        os.system('{} {}'.format(EDITOR, filename))
+        entry = open(filename, 'r').read()
+
+    with open(CAPLOG, 'a') as f:
+        timestamp = dt.datetime.now().isoformat(' ')
+        f.write('{}: {}\n'.format(timestamp, entry))
+
+
+if __name__ == '__main__':
+    sys.exit(main(' '.join(sys.argv[1:])))
