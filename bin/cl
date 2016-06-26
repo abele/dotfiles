@@ -1,4 +1,12 @@
 #!/usr/bin/env python3
+"""
+Add entry to Captain's Log.
+The EDITOR environment variable controls editor to use when editing entry.
+The CAPLOG environment variable controls log file path.
+
+Usage: cl [LOG_ENTRY]
+
+"""
 import datetime as dt
 import os
 import sys
