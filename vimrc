@@ -15,7 +15,7 @@ set hlsearch
 
 set t_Co=256
 syntax on
-colorscheme pablo
+colorscheme default
 
 filetype plugin on
 augroup vimrcEx
