@@ -1,0 +1,13 @@
+#!/usr/bin/env python3
+import datetime as dt
+import sys
+from pathlib import Path
+
+
+def main(filename):
+    f = Path(filename)
+    f.rename('{}-{:%Y%m%d%H%M%S}{}'.format(f.stem, dt.datetime.now(), f.suffix))
+
+
+if __name__ == '__main__':
+    sys.exit(main(sys.argv[1]))
